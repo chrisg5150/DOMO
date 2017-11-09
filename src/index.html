@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Carter Sales Comparison</title>
+    <title>Crews Sales Insights</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
     <script src="env.js"></script>
@@ -15,11 +15,9 @@
     <link rel="stylesheet" href="components/hometile/hometile.css"/>
     <link rel="stylesheet" href="components/graphbar/graphbar.css"/>
     <link rel="stylesheet" href="components/datatable/datatable.css"/>
-    <link rel="stylesheet" href="sections/home/home.css"/>
-    <link rel="stylesheet" href="sections/sales/sales.css"/>
-    <link rel="stylesheet" href="sections/operations/operations.css"/>
-    <link rel="stylesheet" href="sections/inventory/inventory.css"/>
-    <link rel="stylesheet" href="sections/lostbuybox/lostbuybox.css"/>
+    <link rel="stylesheet" href="sections/revenue/revenue.css"/>
+    <link rel="stylesheet" href="sections/volume/volume.css"/>
+    <link rel="stylesheet" href="sections/relationships/relationships.css"/>
     <!-- endbuild -->
 </head>
 <body data-ng-app="app" >
@@ -42,16 +40,14 @@
             </div>
             <div class="collapse navbar-collapse" data-uib-collapse="navbar.isNavCollapsed">
               <ul class="pull-right nav navbar-nav">
-                  <li><a href="#!/home">Home</a></li>
-                  <li><a href="#!/sales">Sales</a></li>
-                  <li><a href="#!/inventory">Inventory</a></li>
-                  <li><a href="#!/operations">Operations</a></li>
-                  <li><a href="#!/lostbuybox">Lost Buy Box</a></li>
+                  <li><a href="#!/revenue">Revenue</a></li>
+                  <li><a href="#!/volume">Volume</a></li>
+                  <li><a href="#!/relationships">Releationships</a></li>
               </ul>
             </div>
           </nav>
           <optionbar></optionbar>
-          <div class="page-loader" data-ng-show="navbar.pageData.loading"><div class="throbber"></div></div>
+          <!--<div class="page-loader" data-ng-show="navbar.pageData.loading"><div class="throbber"></div></div>-->
         </div>
     </header>
 
@@ -96,11 +92,9 @@
         <script src="services/page.val.js"></script>
     <!-- / -->
     <!-- CONTROLLERS -->
-        <script src="sections/home/home.ctrl.js"></script>
-        <script src="sections/sales/sales.ctrl.js"></script>
-        <script src="sections/operations/operations.ctrl.js"></script>
-        <script src="sections/inventory/inventory.ctrl.js"></script>
-        <script src="sections/lostbuybox/lostbuybox.ctrl.js"></script>
+        <script src="sections/revenue/revenue.ctrl.js"></script>
+        <script src="sections/volume/volume.ctrl.js"></script>
+        <script src="sections/relationships/relationships.ctrl.js"></script>
     <!-- / -->
     <!-- DIRECTIVES -->
         <script src="components/navbar/navbar.ctrl.js"></script>

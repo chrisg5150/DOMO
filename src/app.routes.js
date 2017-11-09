@@ -6,52 +6,34 @@ angular
 
 function config ($routeProvider) {
     $routeProvider.
-        when('/home', {
-            templateUrl: 'sections/home/home.tpl.html',
-            controller: 'HomeController as home',
+        when('/revenue', {
+            templateUrl: 'sections/revenue/revenue.tpl.html',
+            controller: 'RevenueController as revenue',
             resolve: {
-                homeData: function(DomoService) {
+                revenueData: function(DomoService) {
                     return DomoService.getHomeData();
                 }
             }
         })
-        .when('/sales', {
-            templateUrl: 'sections/sales/sales.tpl.html',
-            controller: 'SalesController as sales',
+        .when('/volume', {
+            templateUrl: 'sections/volume/volume.tpl.html',
+            controller: 'VolumeController as volume',
             resolve: {
-                salesData: function(DomoService) {
+                volumeData: function(DomoService) {
                     return DomoService.getSalesData();
                 }
             }
         })
-        .when('/operations', {
-            templateUrl: 'sections/operations/operations.tpl.html',
-            controller: 'OperationsController as operations',
+        .when('/relationships', {
+            templateUrl: 'sections/relationships/relationships.tpl.html',
+            controller: 'RelationshipsController as relationships',
             resolve: {
-                operationsData: function(DomoService) {
+                relationshipsData: function(DomoService) {
                     return DomoService.getOperationsData();
                 }
             }
         })
-        .when('/inventory', {
-            templateUrl: 'sections/inventory/inventory.tpl.html',
-            controller: 'InventoryController as inventory',
-            resolve: {
-                inventoryData: function(DomoService) {
-                    return DomoService.getInventoryData();
-                }
-            }
-        })
-        .when('/lostbuybox', {
-            templateUrl: 'sections/lostbuybox/lostbuybox.tpl.html',
-            controller: 'LostbuyboxController as lostbuybox',
-            resolve: {
-                lostbuyboxData: function(DomoService) {
-                    return DomoService.getLostbuyboxData();
-                }
-            }
-        })
         .otherwise({
-            redirectTo: '/home'
+            redirectTo: '/revenue'
         });
 }
