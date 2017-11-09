@@ -1,7 +1,7 @@
 'use strict';
 angular
     .module('app.core')
-    .controller('SalesController', function($scope, $rootScope, PageData, $log, salesData, $filter) {
+    .controller('RevenueController', function($scope, $rootScope, PageData, $log, revenueData, $filter) {
 
         var timeMapping = {
           weekly:'sales_weekly',
@@ -73,18 +73,21 @@ angular
 
         function orderData(arr){
           vm.fieldTypes = ['','','','','','currency','',''];
-          var data = arr.map(function(item) {
-            var newItem = {};
-            newItem.asin = item.asin;
-            newItem.asin_name = item.asin_name;
-            newItem.category = item.category;
-            newItem.subcategory = item.subcategory;
-            newItem.color = item.color;
-            newItem.shipped_cogs = item.shipped_cogs;
-            newItem.units_shipped = item.units_shipped;
-            newItem.report_date = item.report_date;
-            return newItem;
-          });
+          var data = [];
+          if(arr) {
+            data = arr.map(function(item) {
+              var newItem = {};
+              newItem.asin = item.asin;
+              newItem.asin_name = item.asin_name;
+              newItem.category = item.category;
+              newItem.subcategory = item.subcategory;
+              newItem.color = item.color;
+              newItem.shipped_cogs = item.shipped_cogs;
+              newItem.units_shipped = item.units_shipped;
+              newItem.report_date = item.report_date;
+              return newItem;
+            });
+          }
           return data;
         }
 
@@ -118,8 +121,7 @@ angular
         function init() {
           vm.pageData = PageData;
 
-          vm.pageData.title = 'Sales';
-          vm.pageData.icon = 'img-sales-sm';
+          vm.pageData.title = 'Revenue';
           vm.pageData.optionBar.show = true;
           vm.pageData.optionBar.opsShow = false;
           vm.pageData.optionBar.timeShow = true;

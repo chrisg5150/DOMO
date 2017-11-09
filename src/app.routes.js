@@ -11,7 +11,7 @@ function config ($routeProvider) {
             controller: 'RevenueController as revenue',
             resolve: {
                 revenueData: function(DomoService) {
-                    return DomoService.getHomeData();
+                    // return DomoService.getHomeData();
                 }
             }
         })
@@ -20,7 +20,7 @@ function config ($routeProvider) {
             controller: 'VolumeController as volume',
             resolve: {
                 volumeData: function(DomoService) {
-                    return DomoService.getSalesData();
+                    // return DomoService.getSalesData();
                 }
             }
         })
@@ -29,7 +29,7 @@ function config ($routeProvider) {
             controller: 'RelationshipsController as relationships',
             resolve: {
                 relationshipsData: function(DomoService) {
-                    return DomoService.getOperationsData();
+                    // return DomoService.getOperationsData();
                 }
             }
         })
