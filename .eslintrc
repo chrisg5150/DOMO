@@ -1,0 +1,16 @@
+{
+    "extends": "angular",
+    "installedESLint": true,
+    "rules": {
+        "no-var": "off",
+        "require-jsdoc": "off",
+        "max-len": "off",
+        "camelcase": "off"
+    },
+    "env": {
+      'browser': true
+    },
+    "globals": {
+        "angular": true
+    }
+}

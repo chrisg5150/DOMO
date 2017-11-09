@@ -1,0 +1,33 @@
+.home{
+  margin: 0 auto 0;
+  padding-left:15px;
+  padding-top:60px;
+}
+
+@media screen and (max-width: 929px) {
+  .home{
+    overflow-y: hidden;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .home {
+    margin: 0 auto;
+    padding-top: 5px;
+  }
+  .hometile-container,.hometile-container:first-child{
+    margin: 10px auto;
+    padding-left: 80px;
+  }
+}
+
+@media screen and (max-width: 225px) {
+  .home {
+    margin: 0 auto;
+    padding-top: 5px;
+  }
+  .hometile-container,.hometile-container:first-child{
+    margin: 10px auto;
+    padding-left: 10px;
+  }
+}

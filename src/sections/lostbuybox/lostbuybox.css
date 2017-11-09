@@ -1,0 +1,24 @@
+.lostbuybox .summary-header{
+  min-height:40px;
+  padding:10px 10px 10px 15px;
+}
+
+.lostbuybox .summary-header.col-2{
+  width:50%;
+  float:left;
+  border-left: 1px solid #F5F5F5;
+}
+
+.lostbuybox .summary-header h2, .summary-header h4{
+  color:#FFF;
+}
+
+.lostbuybox .summary-header h2, .summary-header h4{
+  color:#FFF;
+}
+
+.graph-container.lostbuybox{
+  display:block;
+  box-sizing: border-box;
+  min-height:400px;
+}

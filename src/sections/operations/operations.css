@@ -1,0 +1,19 @@
+.operations .summary-header{
+  min-height:40px;
+  padding:10px 10px 10px 15px;
+}
+
+.operations .summary-header h2, .summary-header h4{
+  color:#FFF;
+}
+
+.operations .summary-header h2, .summary-header h4{
+  color:#FFF;
+}
+.bar-chart-container{
+  height:330px;
+}
+
+.line-chart-container{
+  height:400px;
+}

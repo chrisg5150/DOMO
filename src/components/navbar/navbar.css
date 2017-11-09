@@ -1,0 +1,112 @@
+.horizontal-collapse {
+
+}
+
+.navbar-default .navbar-collapse, .navbar-default, .navbar-form {
+    border: 0;
+}
+
+.navbar-default {
+    background-color: #FEFEFE;
+}
+
+.navbar-default .navbar-toggle, .navbar-default .navbar-toggle .icon-bar {
+    border-color: #C2C2C3;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #C2C2C3;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: transparent;
+    border-color: #fff;
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-collapse {
+    margin-right:40px;
+}
+
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 15px;
+    margin-right: 60px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.nav-title {
+  display: inline-block;
+  padding-left: 10px;
+  padding-top: 8px;
+}
+
+.nav-title h2{
+  font-size: 24px;
+  color: #00699D;
+
+}
+
+.navbar {
+    min-height: 10px;
+    margin-bottom: 0;
+    background-color: #232F3E;
+    border-radius: 0;
+}
+
+ul.navbar-nav {
+  padding-top: 10px;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus {
+  font-size: 19px;
+  font-weight: 100;
+  color: #C2C2C3;
+  padding: 15px 10px;
+}
+
+.navbar-nav > li:first-child > a {
+  padding: 15px 10px 15px 0;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #FFF;
+    background-color: transparent;
+}
+
+.navbar-nav a.disabled {
+  color: #606670;
+}
+
+.navbar-collapse.in {
+    overflow-y: hidden;
+    border-top: 1px solid #606670;
+    background-color: #32445B;
+    margin-right:0;
+    padding-right:60px;
+}
+
+.navbar-collapse.in a {
+    padding: 10px 0 !important;
+}
+
+@media screen and (max-width: 240px) {
+  .nav-title {
+    width:75px;
+  }
+  .nav-title h2 {
+    font-size: 17px;
+  }
+  .nav-title .pipe {
+    display:none;
+  }
+}

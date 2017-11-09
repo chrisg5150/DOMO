@@ -1,0 +1,41 @@
+{
+  "name": "crews_sales_insights",
+  "description": "Crews sales insights Domo app",
+  "main": "index.html",
+  "authors": [
+    "Nate Jackson",
+    "Steve Piano"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.1",
+    "angular-animate": "1.6.1",
+    "angular-route": "1.6.1",
+    "moment": "^2.17.1",
+    "angular-moment": "^1.0.1",
+    "angular-touch": "1.6.1",
+    "angular-truncate": "*",
+    "angular-cookies": "1.6.1",
+    "angular-base64": "^2.0.5",
+    "angular-filter": "^0.5.15",
+    "angular-messages": "1.6.1",
+    "angular-bootstrap": "^2.5.0",
+    "alasql": "^0.3.7",
+    "chart.js": "^2.5.0",
+    "angular-chart.js": "^1.1.1",
+    "angular-smart-table": "^2.1.8"
+  },
+  "resolutions": {
+    "angular": "1.6.1",
+    "d3": "^4.7.1"
+  }
+}

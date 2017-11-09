@@ -1,0 +1,26 @@
+
+<script type="text/ng-template" id="datatable-modal.html">
+  <div class="datatable">
+      <div class="modal-header">
+          <h3 class="modal-title">{{title}}</h3>
+          <div class="exit-btn glyphicon glyphicon-remove" ng-click="cancel()" ></div>
+      </div>
+      <div class="modal-body">
+        <table st-table="data" class="table">
+        	<thead>
+            <tr>
+      				<th colspan="{{headings.length}}"><input st-search="" class="form-control" placeholder="Search" type="text"/></th>
+      			</tr>
+          	<tr>
+          		<th st-sort="{{heading.id}}" class="hot-heading" st-class-descent="down-on" st-class-ascent="up-on" data-ng-repeat="heading in headings">{{heading.name | uppercase}}<span class="uparrow glyphicon glyphicon-triangle-top"></span><span class="uparrow glyphicon glyphicon-triangle-top disabled"></span><span class="downarrow glyphicon glyphicon-triangle-bottom"></span></th>
+          	</tr>
+        	</thead>
+        	<tbody>
+          	<tr data-ng-repeat="row in data">
+          		<td data-ng-repeat="head in headings">{{row[head.id] | useFilter:fieldTypes[$index]}}</td>
+          	</tr>
+        	</tbody>
+        </table>
+      </div>
+    </div>
+  </script>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="page-view operations">
+    <div id="trends" ng-hide="operations.pageData.optionBar.opsCurrent.val === 'vlt'">
+      <div class="line-chart-container">
+        <canvas class="chart chart-line" chart-data="operations.chart.trends.currentData.data" chart-labels="operations.chart.trends.currentData.labels"
+        chart-options="operations.chart.trends.options" chart-colors="operations.chart.colors" chart-series="operations.chart.trends.currentData.series"></canvas>
+      </div>
+    </div>
+    <div id="vlt" ng-hide="operations.pageData.optionBar.opsCurrent.val === 'trends'">
+      <div class="summary-header bg" ng-class="operations.changeClass">
+        <div><h2>{{operations.total | number:1}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{operations.pageData.lang.vltpop}}" popover-trigger="'mouseenter'" class="pop" >{{operations.pageData.lang.vltdays}}</span></h2></div>
+        <div><h4>{{operations.totalChange | number:1}} {{operations.compStr}} {{operations.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{operations.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{operations.totalDate}}</span> </h4></div>
+      </div>
+      <div class="bar-chart-container">
+        <canvas class="chart chart-bar" chart-data="operations.chart.vlt.currentData.data" chart-labels="operations.chart.vlt.currentData.labels"
+        chart-options="operations.chart.vlt.options" chart-colors="operations.chart.barColors" chart-series="operations.chart.vlt.currentData.series"></canvas>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="page-view inventory">
+    <div class="summary-header bg col-3 first" ng-class="inventory.changeClass">
+      <div><h2>{{inventory.total | percentage:1}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{inventory.pageData.lang.invoosratepop}}" popover-trigger="'mouseenter'" class="pop" >{{inventory.pageData.lang.oos}}</span></h2></div>
+      <div><h4>{{inventory.totalChange | percentage:1}} {{inventory.compStr}} {{inventory.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" uib-popover="{{inventory.pageData.lang.datepop}}" popover-placement="bottom" popover-trigger="'mouseenter'" class="nowrap pop">{{inventory.totalDate}}</span></h4></div>
+    </div>
+    <div class="summary-header bg col-3" ng-class="inventory.changeLostSalesClass">
+      <div><h2>{{inventory.totalLostSales | useSummaryFilter:inventory.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{inventory.currentLostSalesPop}}" popover-trigger="'mouseenter'" class="pop" >{{inventory.pageData.lang.lost}} {{inventory.pageData.optionBar.metricCurrent.name}}</span></h2></div>
+      <div><h4>{{inventory.totalLostSalesChange | useSummaryFilter:inventory.pageData.metricType}} {{inventory.compStr}} {{inventory.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{inventory.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="nowrap pop">{{inventory.totalDate}}</span></h4></div>
+    </div>
+    <div class="summary-header bg col-3" ng-class="inventory.changeRiskSalesClass">
+      <div><h2>{{inventory.totalRiskSales | useSummaryFilter:inventory.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{inventory.currentRiskSalesPop}}" popover-trigger="'mouseenter'" class="pop" >{{inventory.pageData.lang.atrisk}} {{inventory.pageData.optionBar.metricCurrent.name}}</span></h2></div>
+      <div><h4>{{inventory.totalRiskSalesChange | useSummaryFilter:inventory.pageData.metricType}} {{inventory.compStr}} {{inventory.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{inventory.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="nowrap pop">{{inventory.totalDate}}</span></h4></div>
+    </div>
+    <div class="graph-container inventory" >
+      <graphbar graphdata="inventory.chart.data" metric="'Lost '+ inventory.pageData.optionBar.metricCurrent.name" reverse="true"></graphbar>
+    </div>
+  </div>
+</div>
+<datatable></datatable>

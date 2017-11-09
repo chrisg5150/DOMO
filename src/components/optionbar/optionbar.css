@@ -1,0 +1,74 @@
+#optionbar-container {
+  margin-top:0px;
+  width:100%;
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #D9D9D9;
+  min-height: 40px;
+}
+
+.optionbar-title {
+  display: inline-block;
+  padding-left: 20px;
+  padding-top: 8px;
+}
+
+.optionbar-title .sprite{
+  display:inline-block;
+}
+
+.optionbar-title h3{
+  display:inline-block;
+  padding-left:10px;
+  padding-top: 4px;
+  vertical-align:top;
+}
+
+#optionbar-selects {
+  display:inline-block;
+  width:90%;
+  min-height:34px;
+  right:60px;
+  padding-top:3px;
+  position: absolute;
+}
+
+#optionbar-selects .optionbar-dropdown{
+  display:inline-block;
+  padding-left:10px;
+}
+#optionbar-selects .current-option{
+  padding-right:4px;
+}
+
+.optionbar-dropdown button, .optionbar-dropdown .btn-group {
+  min-height:34px;
+
+}
+
+.optionbar-dropdown button {
+    width:100%;
+    text-align: right;
+    overflow:hidden;
+}
+
+.optionbar-dropdown .btn-group {
+  width:100%;
+}
+
+.btn-group {
+    vertical-align: inherit;
+}
+
+@media screen and (max-width: 550px) {
+
+}
+
+@media screen and (max-width: 450px) {
+  #optionbar-container {
+    min-height: 80px;
+  }
+  #optionbar-selects {
+    width:50%;
+
+  }
+}

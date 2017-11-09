@@ -1,0 +1,75 @@
+.exit-btn {
+  background-color: #C6556B;
+  width:30px;
+  height:30px;
+  color: #fff;
+  padding:6px 6px;
+  font-size: 18px;
+  text-align: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.exit-btn:hover {
+    background-color: #EB6888;
+    text-decoration: none;
+}
+.spacer {
+  height:10px;
+}
+
+.datatable .modal-body .downarrow, .datatable .modal-body .uparrow, .datatable .modal-body .uparrow.disabled{
+  vertical-align: bottom;
+  padding-left: 2px;
+}
+
+.datatable .modal-body .uparrow.disabled{
+  visibility:visible;
+  display:inline;
+  color:#ccc;
+}
+
+.datatable .modal-body .downarrow, .datatable .modal-body .uparrow{
+  visibility:hidden;
+  display:inline;
+}
+.datatable .modal-body .downarrow, .datatable .modal-body .uparrow{
+  display:none;
+}
+
+.datatable .modal-body .down-on .downarrow {
+  visibility:visible;
+  display:inline;
+}
+
+.datatable .modal-body .up-on .uparrow {
+  visibility:visible;
+  display:inline;
+}
+
+.datatable .modal-body .up-on .downarrow, .datatable .modal-body .up-on .uparrow.disabled {
+  display:none;
+}
+
+.datatable .modal-body .down-on .uparrow, .datatable .modal-body .down-on .uparrow.disabled {
+  display:none;
+}
+
+.hot-heading{
+  cursor: pointer;
+}
+
+@media screen and (max-width: 240px) {
+  .modal-title{
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 920px){
+  .modal-dialog.modal-lg {
+      width: 850px;
+      margin: 30px auto;
+  }
+}

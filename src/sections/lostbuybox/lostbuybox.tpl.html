@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="page-view lostbuybox">
+    <div class="summary-header bg col-2" ng-class="lostbuybox.changeClass">
+      <div><h2>{{lostbuybox.total | percentage:1}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{lostbuybox.pageData.lang.lbbpop}}" popover-trigger="'mouseenter'" class="pop" >{{lostbuybox.pageData.lang.lostlbb}}</span></h2></div>
+      <div><h4>{{lostbuybox.totalChange | percentage:1}} {{lostbuybox.compStr}} {{lostbuybox.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{lostbuybox.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{lostbuybox.totalDate}}</span></h4></div>
+    </div>
+    <div class="summary-header bg col-2" ng-class="lostbuybox.changeLostSalesClass">
+      <div><h2>{{lostbuybox.totalLostSales | useSummaryFilter:lostbuybox.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{lostbuybox.currentMetricPop}}" popover-trigger="'mouseenter'" class="pop" >{{lostbuybox.pageData.lang.lost}} {{lostbuybox.pageData.optionBar.metricCurrent.name}}</span></h2></div>
+      <div><h4>{{lostbuybox.totalLostSalesChange | useSummaryFilter:lostbuybox.pageData.metricType}} {{lostbuybox.compStr}} {{lostbuybox.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{lostbuybox.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{lostbuybox.totalDate}}</span></h4></div>
+    </div>
+    <div class="graph-container lostbuybox" >
+      <graphbar graphdata="lostbuybox.chart.data" reverse="true"></graphbar>
+    </div>
+  </div>
+</div>
+<datatable></datatable>

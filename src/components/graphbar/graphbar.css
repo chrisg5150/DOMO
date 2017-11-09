@@ -1,0 +1,48 @@
+.graphbar-bar{
+  min-height:30px;
+  min-width:1px;
+  display:inline-block;
+  position:relative;
+  padding-left:1px;
+  font-weight: 500;
+  font-size: 13px;
+  overflow-x: visible;
+}
+
+.bar-text{
+  padding:6px 0 0 14px;
+  float:left;
+  width:200px;
+  position:absolute;
+}
+
+.graphbar-table{
+  width:100%;
+}
+
+.graphbar-titles{
+  width:25%;
+  text-align: right;
+}
+
+.graphbar-change-col{
+  width:20%;
+  text-align: left;
+}
+
+.graphbar-titles h4{
+  font-weight: 300;
+}
+
+.graphbar-row td{
+  padding:8px 0 8px 15px;
+}
+
+.graphbar-arrow{
+  font-size: 20px;
+  vertical-align: text-bottom;
+}
+
+.graphbar-link{
+  cursor: pointer;
+}

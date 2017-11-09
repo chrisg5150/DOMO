@@ -1,0 +1,11 @@
+<div class="graphbar-container">
+  <table class="graphbar-table">
+      <tr class="graphbar-row graphbar-link" ng-click="graphbar.barClick(data)" ng-mouseover="hlclass='highlight'" ng-mouseleave="hlclass='normal'" data-ng-repeat="data in graphdata">
+        <td class="graphbar-titles" ng-class="hlclass" ><h4>{{data.subcategory}}</h4></td>
+        <td class="graphbar-bar-col" ng-class="hlclass" ><div class="graphbar-bar bg" ng-style="{'width':data.width+'%'}" ng-class="data.color"><div class="bar-text">{{data.value | useSummaryFilter:graphbar.pageData.metricType}} {{metric}}</div></div></td>
+        <td class="graphbar-change-col text" ng-class="[data.color,hlclass]" >{{data.change | useSummaryFilter:graphbar.pageData.metricType}}
+          <span class="glyphicon graphbar-arrow" ng-hide="reverse" ng-class="(data.color=='green')?'glyphicon glyphicon-triangle-top':'glyphicon-triangle-bottom'"></span>
+          <span class="glyphicon graphbar-arrow" ng-hide="!reverse" ng-class="(data.color=='green')?'glyphicon glyphicon-triangle-bottom':'glyphicon-triangle-top'"></span></td>
+      </tr>
+  </table>
+</div>

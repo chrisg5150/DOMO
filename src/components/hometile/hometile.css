@@ -1,0 +1,34 @@
+.hometile-title h2{
+  text-align: center;
+  padding-top: 10px;
+}
+
+.hometile-value h3{
+  text-align: center;
+}
+
+.hometile-icon{
+  padding-top: 15px;
+}
+
+.hometile-icon .sprite{
+  margin:0 auto;
+}
+
+.hometile-container{
+  float:left;
+  padding-left: 22px;
+}
+.hometile-container:first-child{
+  padding-left: 0;
+}
+
+@media screen and (max-width: 240px) {
+  .hometile-title h2{
+    font-size: 17px;
+    font-weight: 300;
+  }
+  .hometile-container{
+    padding-left: 0;
+  }
+}

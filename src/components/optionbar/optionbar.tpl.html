@@ -1,0 +1,48 @@
+<div id="optionbar-container" data-ng-show="optionbar.pageData.optionBar.show">
+    <div class="optionbar-title" >
+      <div class="sprite" data-ng-class="optionbar.pageData.icon"></div><h3 data-ng-cloak>{{optionbar.pageData.title}}</h3>
+    </div>
+
+    <div id="optionbar-selects" class="pull-right">
+      <div id="viewdropdown" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.viewShow">
+        <div class="btn-group dropdown" uib-dropdown >
+          <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+            <span class="current-option pull-left">{{optionbar.pageData.optionBar.viewCurrent.name}}</span> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li role="menuitem" data-ng-repeat="vchoice in optionbar.pageData.optionBar.viewChoices" ><a ng-click="optionbar.changeView(vchoice)">{{vchoice.name}}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="timedropdown" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.timeShow">
+        <div class="btn-group dropdown" uib-dropdown >
+          <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+            <span class="current-option pull-left">{{optionbar.pageData.optionBar.timeCurrent.name}}</span> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li role="menuitem" data-ng-repeat="tchoice in optionbar.pageData.optionBar.timeChoices" ><a ng-click="optionbar.changeTime(tchoice)">{{tchoice.name}}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="metricdropdown" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.metricShow">
+        <div class="btn-group dropdown" uib-dropdown >
+          <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+            <span class="current-option pull-left">{{optionbar.pageData.optionBar.metricCurrent.name}}</span> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li role="menuitem" data-ng-repeat="choice in optionbar.pageData.optionBar.metricChoices" ><a ng-click="optionbar.changeMetric(choice)">{{choice.name}}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="opsdropdown" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.opsShow">
+        <div class="btn-group dropdown" uib-dropdown >
+          <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+            <span class="current-option pull-left">{{optionbar.pageData.optionBar.opsCurrent.name}}</span> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li role="menuitem" data-ng-repeat="choice in optionbar.pageData.optionBar.opsChoices" ><a ng-click="optionbar.changeOps(choice)">{{choice.name}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>

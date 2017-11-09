@@ -1,0 +1,33 @@
+.sprite{ background:url("../images/sprite.png") top left no-repeat; }
+.img-tile-down-rev{ width:206px; height:206px; background-position:-10px -10px; }
+.img-tile-up-rev{ width:206px; height:206px; background-position:-10px -226px; }
+.img-tile-down{ width:206px; height:206px; background-position:-10px -442px; }
+.img-tile-up{ width:206px; height:206px; background-position:-10px -658px; }
+.img-tile-up-sm-rev{ width:142px; height:142px; background-position:-10px -874px; }
+.img-tile-down-sm-rev{ width:142px; height:142px; background-position:-10px -1026px; }
+.img-tile-up-sm{ width:142px; height:142px; background-position:-10px -1178px; }
+.img-tile-down-sm{ width:142px; height:142px; background-position:-10px -1330px; }
+.img-logo{ width:208px; height:68px; background-position:-10px -1482px; }
+.img-logo-sm{ width:99px; height:68px; background-position:-10px -1560px; }
+.img-lostbuybox{ width:91px; height:62px; background-position:-119px -1560px; }
+.img-operations{ width:91px; height:62px; background-position:-10px -1638px; }
+.img-inventory{ width:65px; height:62px; background-position:-111px -1638px; }
+.img-sales{ width:102px; height:62px; background-position:-10px -1710px; }
+.img-inventory-sm{ width:32px; height:31px; background-position:-162px -874px; }
+.img-sales-sm{ width:51px; height:31px; background-position:-162px -1026px; }
+.img-operations-sm{ width:45px; height:31px; background-position:-162px -1178px; }
+.img-lostbuybox-sm{ width:44px; height:31px; background-position:-162px -1330px; }
+
+
+@media screen and (max-width: 240px) {
+
+  .img-tile-up-rev{ width:142px; height:142px; background-position:-10px -874px; }
+  .img-tile-down-rev{ width:142px; height:142px; background-position:-10px -1026px; }
+  .img-tile-up{ width:142px; height:142px; background-position:-10px -1178px; }
+  .img-tile-down{ width:142px; height:142px; background-position:-10px -1330px; }
+
+  .img-inventory{ width:32px; height:31px; background-position:-162px -874px; }
+  .img-sales{ width:51px; height:31px; background-position:-162px -1026px; }
+  .img-operations{ width:45px; height:31px; background-position:-162px -1178px; }
+  .img-lostbuybox{ width:44px; height:31px; background-position:-162px -1330px; }
+}

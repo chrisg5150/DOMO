@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carter Sales Comparison</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
+    <script src="env.js"></script>
+    <!-- build:css assets/css/styles.css -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/animations.css"/>
+    <link rel="stylesheet" href="assets/css/sprite.css"/>
+    <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="components/navbar/navbar.css"/>
+    <link rel="stylesheet" href="components/optionbar/optionbar.css"/>
+    <link rel="stylesheet" href="components/hometile/hometile.css"/>
+    <link rel="stylesheet" href="components/graphbar/graphbar.css"/>
+    <link rel="stylesheet" href="components/datatable/datatable.css"/>
+    <link rel="stylesheet" href="sections/home/home.css"/>
+    <link rel="stylesheet" href="sections/sales/sales.css"/>
+    <link rel="stylesheet" href="sections/operations/operations.css"/>
+    <link rel="stylesheet" href="sections/inventory/inventory.css"/>
+    <link rel="stylesheet" href="sections/lostbuybox/lostbuybox.css"/>
+    <!-- endbuild -->
+</head>
+<body data-ng-app="app" >
+
+    <header id="site-header">
+        <div data-ng-controller="NavbarController as navbar">
+          <nav class="navbar navbar-default" role="navigation">
+
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-ng-click="navbar.isNavCollapsed = !navbar.isNavCollapsed">
+        				<span class="sr-only">Toggle navigation</span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        			</button>
+              <div class="logo-container">
+                <div class="pull-left sprite img-logo"></div>
+                <div class="pull-left sprite img-logo-sm"></div>
+              </div>
+            </div>
+            <div class="collapse navbar-collapse" data-uib-collapse="navbar.isNavCollapsed">
+              <ul class="pull-right nav navbar-nav">
+                  <li><a href="#!/home">Home</a></li>
+                  <li><a href="#!/sales">Sales</a></li>
+                  <li><a href="#!/inventory">Inventory</a></li>
+                  <li><a href="#!/operations">Operations</a></li>
+                  <li><a href="#!/lostbuybox">Lost Buy Box</a></li>
+              </ul>
+            </div>
+          </nav>
+          <optionbar></optionbar>
+          <div class="page-loader" data-ng-show="navbar.pageData.loading"><div class="throbber"></div></div>
+        </div>
+    </header>
+
+    <section id="main">
+        <div>
+            <ng-view class="page" ></ng-view>
+        </div>
+    </section>
+
+    <!-- build:assets assets.min.js -->
+    <!-- ASSETS -->
+        <script src="assets/js/bower_components/angular/angular.js"></script>
+        <script src="assets/js/bower_components/angular-animate/angular-animate.js"></script>
+        <script src="assets/js/bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="assets/js/bower_components/angular-route/angular-route.js"></script>
+        <script src="assets/js/bower_components/angular-touch/angular-touch.js"></script>
+        <script src="assets/js/bower_components/angular-messages/angular-messages.js"></script>
+        <script src="assets/js/bower_components/angular-base64/angular-base64.js"></script>
+        <script src="assets/js/bower_components/angular-filter/dist/angular-filter.js"></script>
+        <script src="assets/js/bower_components/moment/moment.js"></script>
+        <script src="assets/js/bower_components/angular-moment/angular-moment.js"></script>
+        <script src="assets/js/bower_components/angular-truncate/src/truncate.js"></script>
+        <script src="assets/js/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+        <script src="assets/js/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="assets/js/bower_components/angular-smart-table/dist/smart-table.js"></script>
+        <script src="assets/js/bower_components/chart.js/dist/Chart.js"></script>
+        <script src="assets/js/bower_components/angular-chart.js/angular-chart.js"></script>
+        <script src="assets/js/bower_components/alasql/dist/alasql.js"></script>
+        <script src="assets/js/domo.js"></script>
+    <!-- / -->
+    <!-- endbuild -->
+    <!-- build:js app.min.js -->
+    <!-- MODULES -->
+        <script src="app.config.js"></script>
+        <script src="app.routes.js"></script>
+        <script src="app.core.js"></script>
+        <script src="app.services.js"></script>
+        <script src="app.js"></script>
+    <!-- / -->
+    <!-- SERVICES -->
+        <script src="services/domo.fct.js"></script>
+        <script src="services/page.val.js"></script>
+    <!-- / -->
+    <!-- CONTROLLERS -->
+        <script src="sections/home/home.ctrl.js"></script>
+        <script src="sections/sales/sales.ctrl.js"></script>
+        <script src="sections/operations/operations.ctrl.js"></script>
+        <script src="sections/inventory/inventory.ctrl.js"></script>
+        <script src="sections/lostbuybox/lostbuybox.ctrl.js"></script>
+    <!-- / -->
+    <!-- DIRECTIVES -->
+        <script src="components/navbar/navbar.ctrl.js"></script>
+        <script src="components/optionbar/optionbar.drct.js"></script>
+        <script src="components/hometile/hometile.drct.js"></script>
+        <script src="components/graphbar/graphbar.drct.js"></script>
+        <script src="components/datatable/datatable.drct.js"></script>
+        <script src="directives/ngEnter.drct.js"></script>
+        <script src="filters/useFilter.fltr.js"></script>
+        <script src="filters/percentage.fltr.js"></script>
+        <script src="filters/useSummaryFilter.fltr.js"></script>
+    <!-- / -->
+    <!-- inject:js -->
+    <!-- endinject -->
+    <!-- endbuild -->
+</body>
+</html>
