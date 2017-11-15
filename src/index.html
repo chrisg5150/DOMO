@@ -40,13 +40,38 @@
             </div>
             <div class="collapse navbar-collapse" data-uib-collapse="navbar.isNavCollapsed">
               <ul class="pull-right nav navbar-nav">
-                  <li><a href="#!/revenue">Revenue</a></li>
-                  <li><a href="#!/volume">Volume</a></li>
-                  <li><a href="#!/relationships">Releationships</a></li>
+                <li><a href="#!/overview">Overview</a></li>
+                <li><a href="#!/revenue">Revenue</a></li>
+                <li><a href="#!/volume">Volume</a></li>
+                <li><a href="#!/relationships">Relationships</a></li>
               </ul>
             </div>
           </nav>
-          <optionbar></optionbar>
+          <optionbar>
+              <div id="optionbar-container">
+                <div class="optionbar-title">
+                    <h3>Overview</h3>
+                </div>
+                <div id="optionbar-selects">
+                    <div class="pull-right customSelect">
+                        <select>
+                            <option>Today</option>
+                            <option>Week to Date</option>
+                            <option>Month to Date</option>
+                            <option>Year to Date</option>
+                            <option>Last 12 Months</option>
+                            <option>Date Range</option>
+                        </select>
+                        <select>
+                            <option>Totals</option>
+                        </select>
+                        <select>
+                            <option>By Group</option>
+                        </select>
+                    </div>
+                </div>
+              </div>
+          </optionbar>
           <!--<div class="page-loader" data-ng-show="navbar.pageData.loading"><div class="throbber"></div></div>-->
         </div>
     </header>
