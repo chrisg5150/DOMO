@@ -25,7 +25,6 @@
     <header id="site-header">
         <div data-ng-controller="NavbarController as navbar">
           <nav class="navbar navbar-default" role="navigation">
-
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-ng-click="navbar.isNavCollapsed = !navbar.isNavCollapsed">
         				<span class="sr-only">Toggle navigation</span>
@@ -40,39 +39,45 @@
             </div>
             <div class="collapse navbar-collapse" data-uib-collapse="navbar.isNavCollapsed">
               <ul class="pull-right nav navbar-nav">
-                <li><a href="#!/overview">Overview</a></li>
-                <li><a href="#!/revenue">Revenue</a></li>
-                <li><a href="#!/volume">Volume</a></li>
-                <li><a href="#!/relationships">Relationships</a></li>
+                  <li><a href="#!/revenue">Revenue</a></li>
+                  <li><a href="#!/volume">Volume</a></li>
+                  <li><a href="#!/accounts">Accounts</a></li>
               </ul>
             </div>
           </nav>
-          <optionbar>
-              <div id="optionbar-container">
-                <div class="optionbar-title">
-                    <h3>Overview</h3>
-                </div>
-                <div id="optionbar-selects">
-                    <div class="pull-right customSelect">
-                        <select>
-                            <option>Today</option>
-                            <option>Week to Date</option>
-                            <option>Month to Date</option>
-                            <option>Year to Date</option>
-                            <option>Last 12 Months</option>
-                            <option>Date Range</option>
-                        </select>
-                        <select>
-                            <option>Totals</option>
-                        </select>
-                        <select>
-                            <option>By Group</option>
-                        </select>
+          <optionbar></optionbar>
+          <!--<div class="page-loader" data-ng-show="navbar.pageData.loading"><div class="throbber"></div></div>-->
+        </div>
+        <div id="optionbar-container">
+            <div class="optionbar-title">
+                <h3>Revenue</h3>
+            </div>
+            <div id="optionbar-selects" class="pull-right">
+                <div class="optionbar-dropdown pull-right">
+                    <div class="btn-group dropdown" uib-dropdown>
+                        <button type="button" class="btn btn-default dropdown-toggle">
+                            <span class="current-option pull-left ng-binding">By Group</span>
+                            <span class="caret"></span>
+                        </button>
                     </div>
                 </div>
-              </div>
-          </optionbar>
-          <!--<div class="page-loader" data-ng-show="navbar.pageData.loading"><div class="throbber"></div></div>-->
+                <div class="optionbar-dropdown pull-right">
+                    <div class="btn-group dropdown" uib-dropdown>
+                        <button type="button" class="btn btn-default dropdown-toggle">
+                            <span class="current-option pull-left ng-binding">Totals</span>
+                            <span class="caret"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="optionbar-dropdown pull-right">
+                    <div class="btn-group dropdown" uib-dropdown>
+                        <button type="button" class="btn btn-default dropdown-toggle">
+                            <span class="current-option pull-left ng-binding">Month to Date</span>
+                            <span class="caret"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
