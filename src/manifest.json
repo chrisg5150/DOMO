@@ -6,7 +6,12 @@
     "height": 2
   },
   "mapping": [
-    
-  ],
-  "id": ""
+    {
+      "alias": "Dataset1",
+      "dataSetId": "f0362a43-ebee-487e-87d6-3e7250069eea",
+      "fields": [
+      ],
+    "id": ""
+    }
+  ]
 }
