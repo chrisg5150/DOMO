@@ -43,7 +43,7 @@ function domoService($log, $window, $http, PageData, $q, $rootScope) {
       var daily = checkCacheGetRequest('sales_daily_append',{groupby:'subcategory'});
       return $q.all([dataset1])
       .then(function(data){
-        console.log(PageData.domoData.Dataset1;
+        console.log(PageData.domoData.Dataset1);
         return data;
       });
     }
