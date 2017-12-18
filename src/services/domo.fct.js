@@ -9,11 +9,7 @@ angular
 
 function domoService($log, $window, $http, PageData, $q, $rootScope) {
     var data = {
-        'getSalesData': getSalesData,
-        'getHomeData': getHomeData,
-        'getOperationsData': getOperationsData,
-        'getInventoryData': getInventoryData,
-        'getLostbuyboxData':getLostbuyboxData
+        'getAppData': getAppData,
 
     };
     var DOMO = $window.domo;
@@ -40,55 +36,16 @@ function domoService($log, $window, $http, PageData, $q, $rootScope) {
 
     }
 
-    function getSalesData() {
+    function getAppData() {
+      var dataset1 = checkCacheGetRequest('Dataset1')
       var weekly = checkCacheGetRequest('sales_weekly');
       var monthly = checkCacheGetRequest('sales_monthly');
       var daily = checkCacheGetRequest('sales_daily_append',{groupby:'subcategory'});
-      return $q.all([daily, weekly, monthly])
+      return $q.all([dataset1])
       .then(function(data){
-        return getSalesPreviousData(PageData.domoData.sales_weekly);
+        console.log(PageData.domoData.Dataset1);
+        return data;
       });
-    }
-
-    function getSalesPreviousData(data) {
-      var date = getReportDate(data);
-      var targetWeek = moment(date,'YYYY-MM-DD').subtract(7,'days').format('YYYY-MM-DD');
-      var targetMonth = moment(date,'YYYY-MM-DD').subtract(1,'month').format('YYYY-MM-DD');
-      var weekly = checkCacheGetRequest('sales_weekly_append',{filter:'report_date = '+targetWeek});
-      var monthly = checkCacheGetRequest('sales_monthly_append',{filter:'report_date = '+targetMonth});
-      return $q.all([weekly, monthly]);
-    }
-
-    function getInventoryData() {
-      var summary = checkCacheGetRequest('fasttrack_summary',{filter:"metric = Actual"});
-      var instock = checkCacheGetRequest('fasttrack_instock');
-      var sales = checkCacheGetRequest('item_costs');
-      var forecast = checkCacheGetRequest('demand_forecast');
-      return $q.all([summary, instock, sales, forecast])
-      .then(function(data){
-        return getInventoryPreviousData(PageData.domoData.fasttrack_summary);
-      });
-    }
-
-    function getInventoryPreviousData(data) {
-      var date = getReportDate(data);
-      var targetWeek = moment(date,'YYYY-MM-DD').subtract(7,'days').format('YYYY-MM-DD');
-      var summary = checkCacheGetRequest('fasttrack_summary_append',{filter:"report_date = "+targetWeek+", metric = Actual"});
-      var instock = checkCacheGetRequest('fasttrack_instock_append',{filter:"report_date = "+targetWeek});
-      return $q.all([summary, instock]);
-    }
-
-    function getLostbuyboxData() {
-      return getInventoryData();
-    }
-
-    function getOperationsData() {
-      return checkCacheGetRequest('operational_metrics');
-    }
-
-    function getHomeData() {
-      getCommonData();
-      return checkCacheGetRequest('section_summary');
     }
 
     function getReportDate(data){
