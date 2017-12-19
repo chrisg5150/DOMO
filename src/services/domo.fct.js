@@ -37,30 +37,11 @@ function domoService($log, $window, $http, PageData, $q, $rootScope) {
     }
 
     function getAppData() {
-      var dataset1 = checkCacheGetRequest('Dataset1')
-      var weekly = checkCacheGetRequest('sales_weekly');
-      var monthly = checkCacheGetRequest('sales_monthly');
-      var daily = checkCacheGetRequest('sales_daily_append',{groupby:'subcategory'});
-      return $q.all([dataset1])
+      var revenue_volume = checkCacheGetRequest('revenue_volume')
+      return $q.all([revenue_volume])
       .then(function(data){
-        console.log(PageData.domoData.Dataset1);
         return data;
       });
-    }
-
-    function getReportDate(data){
-      var rd = moment().format('YYYY-MM-DD');
-      if(data){
-        try{
-          if(data[0].report_date){
-            rd = data[0].report_date;
-          }
-          if(data[0]['Report Date']){
-            rd = data[0]['Report Date'];
-          }
-        }catch(e){}
-      }
-      return rd;
     }
 
     function checkCache(alias){

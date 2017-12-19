@@ -1,16 +1,16 @@
-.sales .summary-header{
+.revenue .summary-header{
   min-height:40px;
   padding:10px 10px 10px 15px;
 }
 
-.sales .summary-header h2, .summary-header h4{
+.revenue .summary-header h2, .summary-header h4{
   color:#FFF;
 }
 
-.sales .summary-header h2, .summary-header h4{
+.revenue .summary-header h2, .summary-header h4{
   color:#FFF;
 }
-.graph-container.sales{
+.graph-container.revenue{
   display:block;
   box-sizing: border-box;
   height:375px;

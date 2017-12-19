@@ -10,44 +10,54 @@ angular
         'metricType':'currency',
         'dataGroup':'subcategory',
         'lang':{
-          
+          'mom': 'MoM',
+          'yoy': 'YoY',
+          'pop': 'PoP'
         },
         'optionBar':{
+          'show':true,
           'timeShow':true,
           'timeCurrent':{},
           'timeChoices':[
             {
-              name:'Today',
-              val:'today'
-            },
-            {
-              name:'Week to Date',
-              val:'weekToDate'
-            },
-            {
               name:'Month to Date',
-              val:'monthToDate'
+              val:'MTD'
             },
             {
               name:'Year to Date',
-              val:'yearToDate'
+              val:'YTD'
             },
             {
               name:'Last 12 Months',
-              val:'last12Months'
+              val:'TR12'
             },
             {
-              name:'Date Range',
-              val:'dateRange'
+              name:'Last 3 Years',
+              val:'TR3YR'
             }
           ],
-          'show':true,
           'metricShow':true,
           'metricCurrent':{},
           'metricChoices':[  
             {
+              name:'Revenue',
+              val:'Revenue'
+            },
+            {
+              name:'Tickets',
+              val:'Tickets'
+            }
+          ],
+          'aggShow':true,
+          'aggCurrent':{},
+          'aggChoices':[  
+            {
               name:'Total',
-              val:'total'
+              val:'Sum'
+            },
+            {
+              name:'Average',
+              val:'Avg'
             }
           ],
           'viewShow':true,
@@ -55,22 +65,21 @@ angular
           'viewChoices':[
             {
               name:'By Group',
-              val:'byGroup'
-            }
-          ],
-          'opsShow':false,
-          'opsCurrent':{},
-          'opsChoices':[
-
-            {
-              name:'VLT',
-              val:'vlt'
+              val:'repGroupDesc'
             },
             {
-              name:'Trends',
-              val:'trends'
+              name:'By Tier',
+              val:'tier'
+            },
+            {
+              name:'By Product',
+              val:'productType'
+            },
+            {
+              name:'By Account',
+              val:'accountType'
             }
-          ]
+          ],          
         },
         'domoData':{},
         'userData':{
