@@ -1,12 +1,11 @@
 <div class="container">
-  <div class="page-view sales">
-    <div class="summary-header bg" ng-class="sales.changeClass">
-      <div><h2>{{sales.total | useSummaryFilter:sales.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{sales.currentMetricPop}}" popover-trigger="'mouseenter'" class="pop" >{{sales.pageData.optionBar.metricCurrent.name}}</span></h2></div>
-      <div><h4>{{sales.totalChange | useSummaryFilter:sales.pageData.metricType}} {{sales.compStr}} {{sales.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{sales.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{sales.totalDate}}</span></h4></div>
+  <div class="page-view revenue">
+    <div class="summary-header bg" ng-class="revenue.changeClass">
+      <div><h2>{{revenue.total | useSummaryFilter:revenue.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{revenue.currentMetricPop}}" popover-trigger="'mouseenter'" class="pop" >{{revenue.pageData.optionBar.metricCurrent.name}}</span></h2></div>
+      <div><h4>{{revenue.totalChange | useSummaryFilter:revenue.pageData.metricType}} {{revenue.compStr}} {{revenue.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{revenue.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{revenue.totalDate}}</span></h4></div>
     </div>
-    <div class="graph-container sales" >
-      <graphbar graphdata="sales.chart.data"></graphbar>
+    <div class="graph-container revenue" >
+      <graphbar graphdata="revenue.chart.data"></graphbar>
     </div>
   </div>
 </div>
-<datatable></datatable>

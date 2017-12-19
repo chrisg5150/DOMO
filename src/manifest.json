@@ -7,7 +7,7 @@
   },
   "mapping": [
     {
-      "alias": "Dataset1",
+      "alias": "revenue_volume",
       "dataSetId": "f0362a43-ebee-487e-87d6-3e7250069eea",
       "fields": [],
       "id": ""

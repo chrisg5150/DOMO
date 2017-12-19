@@ -3,27 +3,35 @@ angular
     .module('app.core')
     .controller('RevenueController', function($scope, $rootScope, PageData, $log, revenueData, $filter) {
 
-        var timeMapping = {
-          weekly:'sales_weekly',
-          monthly:'sales_monthly'
-        };
-        var compMapping = {
-          weekly:PageData.lang.wow,
-          monthly:PageData.lang.mom
-        };
-        var metricMapping = {
-          units:'units_shipped',
-          dollars:'shipped_cogs'
-        };
+        $log.log('revenue');
 
+        var compMapping = {
+          MTD:PageData.lang.mom,
+          YTD:PageData.lang.yoy,
+          TR12:PageData.lang.pop,
+          TR3YR:PageData.lang.pop
+        };
+        
         //Setup view model object
         var vm = this;
 
-        vm.getSum = function(items) {
+        vm.getSum = function(items, metric) {
           if(items && items.length > 0){
             return +((items
-                .map(function(x) { return x[vm.currentMetric]; })
+                .map(function(x) { return x[metric]; })
                 .reduce(function(a, b) { return a + b; })).toFixed(2));
+          } else {
+            return 0;
+          }
+        };
+
+        vm.getAvg = function(items, metric) {
+          if(items && items.length > 0){
+            var len = items.length;
+            var reduced = (items
+                .map(function(x) { return x[metric]; })
+                .reduce(function(a, b) { return a + b; }));
+            return +((reduced/len).toFixed(2));
           } else {
             return 0;
           }
@@ -34,25 +42,40 @@ angular
         };
 
         $scope.$on('time-change', function(event, val) {
-            updateTime();
-            updateMetric();
-            updateChartData();
+          updateAll();
         });
 
         $scope.$on('metric-change', function(event, val) {
-            updateMetric();
-            updateChartData();
+          updateAll();
         });
+
+        $scope.$on('agg-change', function(event, val) {
+          updateAll();
+        });
+
+        $scope.$on('view-change', function(event, val) {
+          updateAll();
+      });
 
         $scope.$on('bar-click', function(event, val) {
-            openTable(val);
+            openDrill(val);
         });
 
+        function openDrill(groupId) {
+
+        }
+
+        function updateAll() {
+          updateData();
+          updateMetric();
+          updateChartData();
+        }
+
         function updateMetric() {
-          vm.currentMetric = metricMapping[PageData.optionBar.metricCurrent.val];
-          vm.currentMetricPop = vm.pageData.lang['sales'+PageData.optionBar.metricCurrent.val+'pop'];
-          vm.total = vm.getSum(vm.data);
-          vm.prevTotal = vm.getSum(vm.prevData);
+          var agg = PageData.optionBar.aggCurrent.val;
+          
+          vm.total = vm['get'+agg](vm.data, 'value');
+          vm.prevTotal = vm['get'+agg](vm.data, 'prevValue');
           vm.totalChange = vm.getChange(vm.total,vm.prevTotal);
           if(vm.totalChange >= 0){
             vm.changeClass = 'green';
@@ -61,30 +84,25 @@ angular
           }
         }
 
-        function updateTime() {
-          vm.currentTime = timeMapping[PageData.optionBar.timeCurrent.val];
-          vm.data = orderData(PageData.domoData[vm.currentTime]);
-          vm.prevData = orderData(PageData.domoData[vm.currentTime+'_append']);
+        function updateData() {
+          vm.data = orderData(PageData.domoData.revenue_volume);
+          console.log('vm.data',vm.data);
           vm.compStr = compMapping[PageData.optionBar.timeCurrent.val];
-          if(vm.data[0]){
-            vm.totalDate = vm.data[0].report_date;
-          }
         }
 
         function orderData(arr){
-          vm.fieldTypes = ['','','','','','currency','',''];
           var data = [];
           if(arr) {
+            var currTime = PageData.optionBar.timeCurrent.val;
+            var currMetric = PageData.optionBar.metricCurrent.val;
+            var currView = PageData.optionBar.viewCurrent.val;
+            var currAgg = PageData.optionBar.aggCurrent.val;
             data = arr.map(function(item) {
               var newItem = {};
-              newItem.asin = item.asin;
-              newItem.asin_name = item.asin_name;
-              newItem.category = item.category;
-              newItem.subcategory = item.subcategory;
-              newItem.color = item.color;
-              newItem.shipped_cogs = item.shipped_cogs;
-              newItem.units_shipped = item.units_shipped;
-              newItem.report_date = item.report_date;
+              newItem.value = item[currTime+'_'+currMetric];
+              newItem.prevValue = item['prevYear_'+currTime+'_'+currMetric];
+              newItem.name = item[currView];
+              newItem.report_date = item.businessDate;
               return newItem;
             });
           }
@@ -92,30 +110,24 @@ angular
         }
 
         function updateChartData(){
-          var filteredData = $filter('groupBy')(vm.data, 'subcategory');
-          var filteredPrevData = $filter('groupBy')(vm.prevData, 'subcategory');
+          var filteredData = $filter('groupBy')(vm.data, 'name');
+          console.log('filteredData',filteredData);
           vm.chart.data = [];
           if(filteredData){
             angular.forEach(filteredData, function(value, key) {
+              var agg = PageData.optionBar.aggCurrent.val;
+              
               var dataObj = {
-                subcategory:key,
-                value:vm.getSum(value),
-                category:value[0].category
+                subcategory:key||'None',
+                value:vm['get'+agg](value, 'value'),
+                prevValue: vm['get'+agg](value, 'prevValue'),
               };
-              if(filteredPrevData[key]){
-                dataObj.prevValue = vm.getSum(filteredPrevData[key]);
-              } else {
-                dataObj.prevValue = 0;
-              }
+              
               vm.chart.data.push(dataObj);
+              
             });
             vm.chart.data = $filter('orderBy')(vm.chart.data, 'value', true);
           }
-        }
-
-        function openTable(obj){
-          var filteredData = $filter('filter')(vm.data, {subcategory:obj.subcategory});
-          $rootScope.$broadcast('open-table', filteredData, vm.fieldTypes);
         }
 
         function init() {
@@ -123,7 +135,7 @@ angular
 
           vm.pageData.title = 'Revenue';
           vm.pageData.optionBar.show = true;
-          vm.pageData.optionBar.opsShow = false;
+          vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;
           vm.pageData.optionBar.metricShow = true;
           vm.changeClass = '';
@@ -131,11 +143,8 @@ angular
           vm.chart.options = {
             responsive:true
           };
-          vm.openTable = openTable;
-          updateTime();
-          updateMetric();
-          updateChartData();
-
+          vm.openDrill = openDrill;
+          updateAll();
         }
 
         init();
