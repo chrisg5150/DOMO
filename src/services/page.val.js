@@ -13,41 +13,49 @@ angular
           
         },
         'optionBar':{
-          'show':true,
-          'metricShow':true,
-          'metricCurrent':{},
-          'metricChoices':[
-            {
-              name:'Dollars',
-              val:'dollars'
-            },
-            {
-              name:'Units',
-              val:'units'
-            }
-          ],
           'timeShow':true,
           'timeCurrent':{},
           'timeChoices':[
             {
+              name:'Today',
+              val:'today'
+            },
+            {
               name:'Week to Date',
-              val:'weekly'
+              val:'weekToDate'
             },
             {
               name:'Month to Date',
-              val:'monthly'
+              val:'monthToDate'
+            },
+            {
+              name:'Year to Date',
+              val:'yearToDate'
+            },
+            {
+              name:'Last 12 Months',
+              val:'last12Months'
+            },
+            {
+              name:'Date Range',
+              val:'dateRange'
             }
           ],
-          'viewShow':false,
+          'show':true,
+          'metricShow':true,
+          'metricCurrent':{},
+          'metricChoices':[  
+            {
+              name:'Total',
+              val:'total'
+            }
+          ],
+          'viewShow':true,
           'viewCurrent':{},
           'viewChoices':[
             {
-              name:'Totals',
-              val:'totals'
-            },
-            {
-              name:'Trends',
-              val:'trends'
+              name:'By Group',
+              val:'byGroup'
             }
           ],
           'opsShow':false,
