@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="page-view volume">
+    <div class="summary-header bg" ng-class="volume.changeClass">
+      <div><h2>{{volume.total | useSummaryFilter:volume.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{volume.currentMetricPop}}" popover-trigger="'mouseenter'" class="pop" >{{volume.pageData.optionBar.metricCurrent.name}}</span></h2></div>
+      <div><h4>{{volume.totalChange | useSummaryFilter:volume.pageData.metricType}} {{volume.compStr}} {{volume.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{volume.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{volume.totalDate}}</span></h4></div>
+    </div>
+    <div class="graph-container volume" >
+      <graphbar graphdata="volume.chart.data"></graphbar>
+    </div>
+  </div>
+</div>

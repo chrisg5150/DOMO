@@ -36,16 +36,12 @@ angular
               val:'TR3YR'
             }
           ],
-          'metricShow':true,
+          'metricShow':false,
           'metricCurrent':{},
           'metricChoices':[  
             {
               name:'Revenue',
               val:'Revenue'
-            },
-            {
-              name:'Tickets',
-              val:'Tickets'
             }
           ],
           'aggShow':true,

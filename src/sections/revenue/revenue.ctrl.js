@@ -137,7 +137,11 @@ angular
           vm.pageData.optionBar.show = true;
           vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;
-          vm.pageData.optionBar.metricShow = true;
+          vm.pageData.optionBar.metricShow = false;
+          vm.pageData.optionBar.metricCurrent = {
+            name:'Revenue',
+            val:'Revenue'
+          };         
           vm.changeClass = '';
           vm.chart = {};
           vm.chart.options = {

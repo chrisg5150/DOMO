@@ -1,0 +1,17 @@
+.volume .summary-header{
+  min-height:40px;
+  padding:10px 10px 10px 15px;
+}
+
+.volume .summary-header h2, .summary-header h4{
+  color:#FFF;
+}
+
+.volume .summary-header h2, .summary-header h4{
+  color:#FFF;
+}
+.graph-container.volume{
+  display:block;
+  box-sizing: border-box;
+  height:345px;
+}

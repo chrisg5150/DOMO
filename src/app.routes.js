@@ -14,7 +14,7 @@ function config ($routeProvider) {
                     return DomoService.getAppData();
                 }
             }
-        })/*
+        })
         .when('/volume', {
             templateUrl: 'sections/volume/volume.tpl.html',
             controller: 'VolumeController as volume',
@@ -23,7 +23,7 @@ function config ($routeProvider) {
                     return DomoService.getAppData();
                 }
             }
-        })
+        })/*
         .when('/accounts', {
             templateUrl: 'sections/accounts/accounts.tpl.html',
             controller: 'AccountController as accounts',
