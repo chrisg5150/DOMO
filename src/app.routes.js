@@ -33,6 +33,10 @@ function config ($routeProvider) {
                 }
             }
         })*/
+        .when('/groups/:groupId', {
+            templateUrl: 'sections/groups/groups.tpl.html',
+            controller: 'GroupsController as groups'
+        })
         .otherwise({
             redirectTo: '/revenue'
         });

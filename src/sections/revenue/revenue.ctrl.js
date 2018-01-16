@@ -1,7 +1,7 @@
 'use strict';
 angular
     .module('app.core')
-    .controller('RevenueController', function($scope, $rootScope, PageData, $log, revenueData, $filter) {
+    .controller('RevenueController', function($scope, $rootScope, PageData, $log, revenueData, $filter, $location) {
 
         $log.log('revenue');
 
@@ -117,6 +117,7 @@ angular
                 subcategory:key||'None',
                 value:vm['get'+agg](value, 'value'),
                 prevValue: vm['get'+agg](value, 'prevValue'),
+                drillId: vm['get'+agg](value, )
               };
               
               vm.chart.data.push(dataObj);
@@ -126,9 +127,10 @@ angular
           }
         }
 
-        function openDrill(groupId) { //CHANGE THIS LATER - CURRENTLY SAME AS openTable FROM AMAZON VENDOR
-          var filteredData = $filter('filter')(vm.data, {repName:groupId.repName});
-          $rootScope.$broadcast('open-drill', filteredData);
+        function openDrill(val) {
+          /*var filteredData = $filter('filter')(vm.data, {repName:groupId.repName});
+          $rootScope.$broadcast('open-drill', filteredData); */
+          $location.path('groups/'+val.subcategory);
         }
 
         function init() {
