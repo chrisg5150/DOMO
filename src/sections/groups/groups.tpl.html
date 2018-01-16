@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="page-view revenue">
+      <div class="summary-header bg" ng-class="revenue.changeClass">
+        <div><h2>{{revenue.total | useSummaryFilter:revenue.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{revenue.currentMetricPop}}" popover-trigger="'mouseenter'" class="pop" >{{revenue.pageData.optionBar.metricCurrent.name}}</span></h2></div>
+        <div><h4>{{revenue.totalChange | useSummaryFilter:revenue.pageData.metricType}} {{revenue.compStr}} {{revenue.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{revenue.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{revenue.totalDate}}</span></h4></div>
+      </div>
+      <div class="graph-container revenue" ng-click="graphbar.barClick(data)">
+        <graphbar graphdata="revenue.chart.data"></graphbar>
+      </div>
+    </div>
+  </div>
+  
