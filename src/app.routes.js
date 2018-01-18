@@ -23,16 +23,16 @@ function config ($routeProvider) {
                     return DomoService.getAppData();
                 }
             }
-        })/*
+        })
         .when('/accounts', {
             templateUrl: 'sections/accounts/accounts.tpl.html',
-            controller: 'AccountController as accounts',
+            controller: 'AccountsController as accounts',
             resolve: {
                 accountsData: function(DomoService) {
-                   // return DomoService.getAppData();
+                    return DomoService.getAppData();
                 }
             }
-        })*/
+        })
         .when('/groups/:groupId', {
             templateUrl: 'sections/groups/groups.tpl.html',
             controller: 'GroupsController as groups'

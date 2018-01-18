@@ -128,10 +128,12 @@ angular
           }
         }
 
-        function openDrill(groupId) { //CHANGE THIS LATER - CURRENTLY SAME AS openTable FROM AMAZON VENDOR
+        /*
+          function openDrill(groupId) { //CHANGE THIS LATER - CURRENTLY SAME AS openTable FROM AMAZON VENDOR
           var filteredData = $filter('filter')(vm.data, {repName:groupId.repName});
           $rootScope.$broadcast('open-drill', filteredData);
-        }
+        } 
+        */
 
         function init() {
           vm.pageData = PageData;

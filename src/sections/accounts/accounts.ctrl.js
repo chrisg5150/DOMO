@@ -1,9 +1,9 @@
 'use strict';
 angular
     .module('app.core')
-    .controller('RevenueController', function($scope, $rootScope, PageData, $log, revenueData, $filter, $location) {
+    .controller('AccountsController', function($scope, $rootScope, PageData, $log, accountsData, $filter) {
 
-        $log.log('revenue');
+        $log.log('Accounts');
 
         var compMapping = {
           MTD:PageData.lang.mom,
@@ -58,7 +58,6 @@ angular
       });
 
         $scope.$on('bar-click', function(event, val) {
-            openDrill(val);
         });
 
         function updateAll() {
@@ -81,7 +80,7 @@ angular
         }
 
         function updateData() {
-          vm.data = orderData(PageData.domoData.revenue_volume);
+          vm.data = orderData(PageData.domoData.accounts);
           console.log('vm.data',vm.data);
           vm.compStr = compMapping[PageData.optionBar.timeCurrent.val];
         }
@@ -97,15 +96,13 @@ angular
               var newItem = {};
               newItem.value = item[currTime+'_'+currMetric];
               newItem.prevValue = item['prevYear_'+currTime+'_'+currMetric];
-              newItem.name = item[currView];
+              newItem.name = item.AccountTypes;
               newItem.report_date = item.businessDate;
-              newItem.drillId = item.repID;
+              newItem.company_id = item.CompanyID;
               return newItem;
-            })
-            console.log('data',data);;
+            });
           }
           return data;
-          
         }
 
         function updateChartData(){
@@ -120,42 +117,32 @@ angular
                 subcategory:key||'None',
                 value:vm['get'+agg](value, 'value'),
                 prevValue: vm['get'+agg](value, 'prevValue'),
-                drillId: 'drillId' // NEED TO CHANGE - LIKELY NEED TO MOVE MOST OF THIS OVER TO 
-                                   // GROUPS FILES - SAME THING AS HERE BUT GROUPING BY DRILLID (repID) INSTEAD OF SUBCATEGORY (WHICH IS repGroupDesc)
               };
               
               vm.chart.data.push(dataObj);
-              console.log('dataObj',dataObj);
+              
             });
             vm.chart.data = $filter('orderBy')(vm.chart.data, 'value', true);
-            console.log('vm.chart.data',vm.chart.data);
           }
-        }
-
-        function openDrill(val) {
-          /*var filteredData = $filter('filter')(vm.data, {repName:groupId.repName});
-          $rootScope.$broadcast('open-drill', filteredData); */
-          $location.path('groups/'+val.subcategory);
         }
 
         function init() {
           vm.pageData = PageData;
 
-          vm.pageData.title = 'Revenue';
+          vm.pageData.title = 'Accounts';
           vm.pageData.optionBar.show = true;
           vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;
           vm.pageData.optionBar.metricShow = false;
           vm.pageData.optionBar.metricCurrent = {
-            name:'Revenue',
-            val:'Revenue'
-          };         
+            name:'Accounts',
+            val:'Accounts'
+          }; 
           vm.changeClass = '';
           vm.chart = {};
           vm.chart.options = {
             responsive:true
           };
-          vm.openDrill = openDrill;
           updateAll();
         }
 

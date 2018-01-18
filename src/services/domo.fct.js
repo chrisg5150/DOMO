@@ -38,7 +38,8 @@ function domoService($log, $window, $http, PageData, $q, $rootScope) {
 
     function getAppData() {
       var revenue_volume = checkCacheGetRequest('revenue_volume')
-      return $q.all([revenue_volume])
+      var accounts = checkCacheGetRequest('accounts')
+      return $q.all([revenue_volume, accounts])
       .then(function(data){
         return data;
       });

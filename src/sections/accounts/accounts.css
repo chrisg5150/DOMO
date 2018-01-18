@@ -1,0 +1,18 @@
+.accounts .summary-header{
+    min-height:40px;
+    padding:10px 10px 10px 15px;
+  }
+  
+  .accounts .summary-header h2, .summary-header h4{
+    color:#FFF;
+  }
+  
+  .accounts .summary-header h2, .summary-header h4{
+    color:#FFF;
+  }
+  .graph-container.accounts{
+    display:block;
+    box-sizing: border-box;
+    height:345px;
+  }
+  
