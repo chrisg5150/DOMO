@@ -97,7 +97,7 @@ angular
               newItem.value = item[currTime+'_'+currMetric];
               newItem.prevValue = item['prevYear_'+currTime+'_'+currMetric];
               newItem.name = item.AccountTypes;
-              newItem.report_date = item.businessDate;
+              newItem.create_date = item.CreateDate;
               newItem.company_id = item.CompanyID;
               return newItem;
             });
@@ -114,13 +114,13 @@ angular
               var agg = PageData.optionBar.aggCurrent.val;
               
               var dataObj = {
-                subcategory:key||'None',
+                subcategory:(key === " ") ? 'None':key,
                 value:vm['get'+agg](value, 'value'),
                 prevValue: vm['get'+agg](value, 'prevValue'),
               };
               
               vm.chart.data.push(dataObj);
-              
+              console.log('dataObj',dataObj);              
             });
             vm.chart.data = $filter('orderBy')(vm.chart.data, 'value', true);
           }
