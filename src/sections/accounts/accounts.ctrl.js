@@ -94,13 +94,14 @@ angular
             var currAgg = PageData.optionBar.aggCurrent.val;
             data = arr.map(function(item) {
               var newItem = {};
-              newItem.value = item[currTime+'_'+currMetric];
-              newItem.prevValue = item['prevYear_'+currTime+'_'+currMetric];
+              newItem.value = item[currTime+'_'+'CommAmt'];
+              newItem.prevValue = item.CompanyNumber; //do not have columns with previous year data - currently just using a placeholder
               newItem.name = item.AccountTypes;
               newItem.create_date = item.CreateDate;
               newItem.company_id = item.CompanyID;
               return newItem;
-            });
+            })
+            console.log('data',data);
           }
           return data;
         }
