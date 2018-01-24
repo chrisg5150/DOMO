@@ -42,10 +42,6 @@ angular
             {
               name:'Revenue',
               val:'Revenue'
-            },
-            {
-              name:'Accounts',
-              val:'Accounts'
             }
           ],
           'aggShow':true,

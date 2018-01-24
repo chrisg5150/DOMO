@@ -135,6 +135,7 @@ angular
           vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;
           vm.pageData.optionBar.metricShow = false;
+          vm.pageData.metricType = 'number';
           vm.pageData.optionBar.metricCurrent = {
             name:'Accounts',
             val:'Accounts'
