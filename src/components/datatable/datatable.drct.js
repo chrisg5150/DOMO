@@ -60,10 +60,10 @@ function datatable() {
           }
       };
 
-      $scope.$on('open-drill', function(event, obj, ft) {
+     /* $scope.$on('open-drill', function(event, obj, ft) {
         $log.log('datatable',obj, ft);
           $scope.open(obj, ft);
-      });
+      }); */
 
 
     }

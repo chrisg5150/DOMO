@@ -3,7 +3,7 @@ angular
     .module('app.core')
     .controller('AccountsController', function($scope, $rootScope, PageData, $log, accountsData, $filter) {
 
-        $log.log('Accounts');
+        $log.log('accounts');
 
         var compMapping = {
           MTD:PageData.lang.mom,

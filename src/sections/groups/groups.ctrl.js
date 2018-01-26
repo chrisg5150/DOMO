@@ -59,9 +59,15 @@ angular
           updateAll();
       });
 
-        $scope.$on('bar-click', function(event, val) {
+      $scope.$on('open-drill', function(event, obj) {
+        console.log('obj', obj);
+        /*$log.log('groups',obj);
+          $scope.open(obj); */
+      });
+
+       /* $scope.$on('bar-click', function(event, val) {
             openDrill(val);
-        });
+        }); */ 
 
         function updateAll() {
           updateData();
@@ -101,14 +107,17 @@ angular
               newItem.prevValue = item['prevYear_'+currTime+'_'+currMetric];
               newItem.name = item[currView];
               newItem.report_date = item.businessDate;
+              newItem.repId = item.repId
               return newItem;
             });
+            console.log('data',data);
           }
           return data;
         }
 
         function updateChartData(){
-          var filteredData = $filter('groupBy')(vm.data, 'name');
+          //var filteredDataView = $filter('where')(vm.data, 'name' = 'None')
+          var filteredData = $filter('groupBy')(vm.data, 'repId');
           console.log('filteredData',filteredData);
           vm.chart.data = [];
           if(filteredData){
@@ -116,7 +125,7 @@ angular
               var agg = PageData.optionBar.aggCurrent.val;
               
               var dataObj = {
-                subcategory:key||'None',
+                subcategory:key,
                 value:vm['get'+agg](value, 'value'),
                 prevValue: vm['get'+agg](value, 'prevValue'),
               };
@@ -138,21 +147,21 @@ angular
         function init() {
           vm.pageData = PageData;
 
-          vm.pageData.title = 'Revenue';
+          vm.pageData.title = 'Groups';
           vm.pageData.optionBar.show = true;
           vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;
           vm.pageData.optionBar.metricShow = false;
           vm.pageData.optionBar.metricCurrent = {
-            name:'Revenue',
-            val:'Revenue'
+            name:'Groups',
+            val:'Groups'
           };         
           vm.changeClass = '';
           vm.chart = {};
           vm.chart.options = {
             responsive:true
           };
-          vm.openDrill = openDrill;
+         // vm.openDrill = openDrill;
           updateAll();
         }
 

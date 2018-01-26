@@ -35,7 +35,12 @@ function config ($routeProvider) {
         })
         .when('/groups/:groupId', {
             templateUrl: 'sections/groups/groups.tpl.html',
-            controller: 'GroupsController as groups'
+            controller: 'GroupsController as groups',
+            resolve: {
+                groupsData: function(DomoService) {
+                    return DomoService.getAppData();
+                }
+            }
         })
         .otherwise({
             redirectTo: '/revenue'

@@ -1,11 +1,11 @@
 <div class="container">
     <div class="page-view groups">
       <div class="summary-header bg" ng-class="groups.changeClass">
-        <div><h2>{{revenue.total | useSummaryFilter:revenue.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{revenue.currentMetricPop}}" popover-trigger="'mouseenter'" class="pop" >{{revenue.pageData.optionBar.metricCurrent.name}}</span></h2></div>
-        <div><h4>{{revenue.totalChange | useSummaryFilter:revenue.pageData.metricType}} {{revenue.compStr}} {{revenue.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{revenue.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{revenue.totalDate}}</span></h4></div>
+        <div><h2>{{groups.total | useSummaryFilter:groups.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{groups.currentMetricPop}}" popover-trigger="'mouseenter'" class="pop" >{{groups.pageData.optionBar.metricCurrent.name}}</span></h2></div>
+        <div><h4>{{groups.totalChange | useSummaryFilter:groups.pageData.metricType}} {{groups.compStr}} {{groups.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{groups.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{groups.totalDate}}</span></h4></div>
       </div>
-      <div class="graph-container revenue">
-        <graphbar graphdata="revenue.chart.data"></graphbar>
+      <div class="graph-container groups">
+        <graphbar graphdata="groups.chart.data"></graphbar>
       </div>
     </div>
   </div>

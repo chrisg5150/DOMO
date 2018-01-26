@@ -99,7 +99,7 @@ angular
               newItem.prevValue = item['prevYear_'+currTime+'_'+currMetric];
               newItem.name = item[currView];
               newItem.report_date = item.businessDate;
-              newItem.drillId = item.repID;
+              newItem.repId = item.repID;
               return newItem;
             })
             console.log('data',data);;
@@ -119,9 +119,10 @@ angular
               var dataObj = {
                 subcategory:key||'None',
                 value:vm['get'+agg](value, 'value'),
-                prevValue: vm['get'+agg](value, 'prevValue'),
-                drillId: 'drillId' // NEED TO CHANGE - LIKELY NEED TO MOVE MOST OF THIS OVER TO 
-                                   // GROUPS FILES - SAME THING AS HERE BUT GROUPING BY DRILLID (repID) INSTEAD OF SUBCATEGORY (WHICH IS repGroupDesc)
+                prevValue: vm['get'+agg](value, 'prevValue')
+                //repId: value['repId'] // unsure if we even need to bring this in - likely just need to bring over 
+                                        // the subcategory as the title and filter to only data with that subcategory,
+                                        // then have the key be the repId
               };
               
               vm.chart.data.push(dataObj);
@@ -133,8 +134,8 @@ angular
         }
 
         function openDrill(val) {
-          /*var filteredData = $filter('filter')(vm.data, {repName:groupId.repName});
-          $rootScope.$broadcast('open-drill', filteredData); */
+          var filteredData = $filter('where')(vm.data, {subcategory:val.subcategory});
+          $rootScope.$broadcast('open-drill', filteredData); 
           $location.path('groups/'+val.subcategory);
         }
 
