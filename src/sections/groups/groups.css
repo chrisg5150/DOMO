@@ -1,0 +1,17 @@
+.groups .summary-header{
+  min-height:40px;
+  padding:10px 10px 10px 15px;
+}
+
+.groups .summary-header h2, .summary-header h4{
+  color:#FFF;
+}
+
+.groups .summary-header h2, .summary-header h4{
+  color:#FFF;
+}
+.graph-container.groups{
+  display:block;
+  box-sizing: border-box;
+  height:345px;
+}

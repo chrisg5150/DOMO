@@ -18,7 +18,7 @@ angular
         vm.getSum = function(items, metric) {
           if(items && items.length > 0){
             return +((items
-                .map(function(x) { return x[metric]; })
+                .map(function(x) { return x[metric]||0; })
                 .reduce(function(a, b) { return a + b; })).toFixed(2));
           } else {
             return 0;
@@ -29,7 +29,7 @@ angular
           if(items && items.length > 0){
             var len = items.length;
             var reduced = (items
-                .map(function(x) { return x[metric]; })
+                .map(function(x) { return x[metric]||0; })
                 .reduce(function(a, b) { return a + b; }));
             return +((reduced/len).toFixed(2));
           } else {
@@ -96,7 +96,7 @@ angular
               var newItem = {};
               newItem.value = item[currTime+'_'+currMetric];
               newItem.prevValue = item['prevYear_'+currTime+'_'+currMetric];
-              newItem.name = item[currView];
+              newItem.name = item[currView]||'Unknown';
               newItem.report_date = item.businessDate;
               return newItem;
             });
@@ -133,6 +133,10 @@ angular
           vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;
           vm.pageData.optionBar.metricShow = false;
+          vm.pageData.optionBar.viewShow = true;
+          vm.pageData.optionBar.backShow = false;
+          vm.pageData.optionBar.viewAccountShow = false;
+          vm.pageData.optionBar.metricAccountShow = false;
           vm.pageData.optionBar.metricCurrent = {
             name:'Volume',
             val:'Volume'

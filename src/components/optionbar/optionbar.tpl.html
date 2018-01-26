@@ -5,6 +5,16 @@
 
     <div id="optionbar-selects" class="pull-right">
 
+      <div id="backtogroups" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.backShow">
+        <div class="btn-group" >
+            <a href="#!/revenue">
+              <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                <span class="current-option pull-left">Back to Revenue</span> 
+              </button>
+            </a>          
+        </div>
+      </div>
+
       <div id="viewdropdown" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.viewShow">
         <div class="btn-group dropdown" uib-dropdown >
           <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
@@ -16,6 +26,17 @@
         </div>
       </div>
 
+      <div id="viewaccountdropdown" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.viewAccountShow">
+          <div class="btn-group dropdown" uib-dropdown >
+            <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+              <span class="current-option pull-left">{{optionbar.pageData.optionBar.viewAccountCurrent.name}}</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+              <li role="menuitem" data-ng-repeat="vchoice in optionbar.pageData.optionBar.viewAccountChoices" ><a ng-click="optionbar.changeAccountView(vchoice)">{{vchoice.name}}</a></li>
+            </ul>
+          </div>
+        </div>
+
       <div id="metricdropdown" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.metricShow">
         <div class="btn-group dropdown" uib-dropdown >
           <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
@@ -26,6 +47,17 @@
           </ul>
         </div>
       </div>
+
+      <div id="metricaccountdropdown" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.metricAccountShow">
+          <div class="btn-group dropdown" uib-dropdown >
+            <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+              <span class="current-option pull-left">{{optionbar.pageData.optionBar.metricAccountCurrent.name}}</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+              <li role="menuitem" data-ng-repeat="choice in optionbar.pageData.optionBar.metricAccountChoices" ><a ng-click="optionbar.changeAccountMetric(choice)">{{choice.name}}</a></li>
+            </ul>
+          </div>
+        </div>
 
       <div id="aggdropdown" class="optionbar-dropdown pull-right" data-ng-show="optionbar.pageData.optionBar.aggShow">
         <div class="btn-group dropdown" uib-dropdown >

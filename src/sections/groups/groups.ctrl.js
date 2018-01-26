@@ -20,7 +20,7 @@ angular
         vm.getSum = function(items, metric) {
           if(items && items.length > 0){
             return +((items
-                .map(function(x) { return x[metric]; })
+                .map(function(x) { return x[metric]||0; })
                 .reduce(function(a, b) { return a + b; })).toFixed(2));
           } else {
             return 0;
@@ -31,7 +31,7 @@ angular
           if(items && items.length > 0){
             var len = items.length;
             var reduced = (items
-                .map(function(x) { return x[metric]; })
+                .map(function(x) { return x[metric]||0; })
                 .reduce(function(a, b) { return a + b; }));
             return +((reduced/len).toFixed(2));
           } else {
@@ -59,16 +59,6 @@ angular
           updateAll();
       });
 
-      $scope.$on('open-drill', function(event, obj) {
-        console.log('obj', obj);
-        /*$log.log('groups',obj);
-          $scope.open(obj); */
-      });
-
-       /* $scope.$on('bar-click', function(event, val) {
-            openDrill(val);
-        }); */ 
-
         function updateAll() {
           updateData();
           updateMetric();
@@ -95,29 +85,30 @@ angular
         }
 
         function orderData(arr){
+          console.log('arr',arr);
           var data = [];
           if(arr) {
             var currTime = PageData.optionBar.timeCurrent.val;
             var currMetric = PageData.optionBar.metricCurrent.val;
             var currView = PageData.optionBar.viewCurrent.val;
             var currAgg = PageData.optionBar.aggCurrent.val;
-            data = arr.map(function(item) {
+            data = $filter('where')(arr, {repGroupID:vm.groupId});
+            data = data.map(function(item) {
+              
               var newItem = {};
               newItem.value = item[currTime+'_'+currMetric];
               newItem.prevValue = item['prevYear_'+currTime+'_'+currMetric];
-              newItem.name = item[currView];
+              newItem.name = item.repName||'Unknown';
               newItem.report_date = item.businessDate;
-              newItem.repId = item.repId
               return newItem;
             });
-            console.log('data',data);
           }
           return data;
         }
 
         function updateChartData(){
           //var filteredDataView = $filter('where')(vm.data, 'name' = 'None')
-          var filteredData = $filter('groupBy')(vm.data, 'repId');
+          var filteredData = $filter('groupBy')(vm.data, 'name');
           console.log('filteredData',filteredData);
           vm.chart.data = [];
           if(filteredData){
@@ -137,24 +128,23 @@ angular
           }
         }
 
-        /*
-          function openDrill(groupId) { //CHANGE THIS LATER - CURRENTLY SAME AS openTable FROM AMAZON VENDOR
-          var filteredData = $filter('filter')(vm.data, {repName:groupId.repName});
-          $rootScope.$broadcast('open-drill', filteredData);
-        } 
-        */
+        
 
         function init() {
           vm.pageData = PageData;
 
-          vm.pageData.title = 'Groups';
+          vm.pageData.title = 'Reps';
           vm.pageData.optionBar.show = true;
           vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;
           vm.pageData.optionBar.metricShow = false;
+          vm.pageData.optionBar.viewShow = false;
+          vm.pageData.optionBar.backShow = true;
+          vm.pageData.optionBar.viewAccountShow = false;
+          vm.pageData.optionBar.metricAccountShow = false;
           vm.pageData.optionBar.metricCurrent = {
-            name:'Groups',
-            val:'Groups'
+            name:'Revenue',
+            val:'Revenue'
           };         
           vm.changeClass = '';
           vm.chart = {};

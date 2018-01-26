@@ -18,7 +18,7 @@ angular
         vm.getSum = function(items, metric) {
           if(items && items.length > 0){
             return +((items
-                .map(function(x) { return x[metric]; })
+                .map(function(x) { return x[metric]||0; })
                 .reduce(function(a, b) { return a + b; })).toFixed(2));
           } else {
             return 0;
@@ -29,7 +29,7 @@ angular
           if(items && items.length > 0){
             var len = items.length;
             var reduced = (items
-                .map(function(x) { return x[metric]; })
+                .map(function(x) { return x[metric]||0; })
                 .reduce(function(a, b) { return a + b; }));
             return +((reduced/len).toFixed(2));
           } else {
@@ -58,7 +58,9 @@ angular
       });
 
         $scope.$on('bar-click', function(event, val) {
+          if(PageData.optionBar.viewCurrent.val === 'repGroupDesc') {
             openDrill(val);
+          }  
         });
 
         function updateAll() {
@@ -82,7 +84,7 @@ angular
 
         function updateData() {
           vm.data = orderData(PageData.domoData.revenue_volume);
-          console.log('vm.data',vm.data);
+          console.log('PageData.domoData.revenue_volume',PageData.domoData.revenue_volume);
           vm.compStr = compMapping[PageData.optionBar.timeCurrent.val];
         }
 
@@ -97,12 +99,13 @@ angular
               var newItem = {};
               newItem.value = item[currTime+'_'+currMetric];
               newItem.prevValue = item['prevYear_'+currTime+'_'+currMetric];
-              newItem.name = item[currView];
+              newItem.name = item[currView]||'Unknown';
+              newItem.id = item.repGroupID;
               newItem.report_date = item.businessDate;
               newItem.repId = item.repID;
               return newItem;
             })
-            console.log('data',data);;
+            // console.log('data',data);;
           }
           return data;
           
@@ -115,28 +118,30 @@ angular
           if(filteredData){
             angular.forEach(filteredData, function(value, key) {
               var agg = PageData.optionBar.aggCurrent.val;
-              
+              console.log('value',value);
               var dataObj = {
-                subcategory:key||'None',
+                subcategory:key||'Unknown',
+                id:value[0].id,
                 value:vm['get'+agg](value, 'value'),
                 prevValue: vm['get'+agg](value, 'prevValue')
-                //repId: value['repId'] // unsure if we even need to bring this in - likely just need to bring over 
-                                        // the subcategory as the title and filter to only data with that subcategory,
-                                        // then have the key be the repId
+                
               };
               
               vm.chart.data.push(dataObj);
-              console.log('dataObj',dataObj);
+              // console.log('dataObj',dataObj);
             });
             vm.chart.data = $filter('orderBy')(vm.chart.data, 'value', true);
-            console.log('vm.chart.data',vm.chart.data);
+            // console.log('vm.chart.data',vm.chart.data);
           }
         }
 
         function openDrill(val) {
-          var filteredData = $filter('where')(vm.data, {subcategory:val.subcategory});
+          console.log('val',val);
+          console.log('vm.data',vm.data);
+          var filteredData = $filter('where')(vm.data, {name:val.subcategory});
+          console.log('filteredData',filteredData);
           $rootScope.$broadcast('open-drill', filteredData); 
-          $location.path('groups/'+val.subcategory);
+          $location.path('groups/'+val.id);
         }
 
         function init() {
@@ -147,6 +152,10 @@ angular
           vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;
           vm.pageData.optionBar.metricShow = false;
+          vm.pageData.optionBar.viewShow = true;
+          vm.pageData.optionBar.backShow = false;
+          vm.pageData.optionBar.viewAccountShow = false;
+          vm.pageData.optionBar.metricAccountShow = false;
           vm.pageData.optionBar.metricCurrent = {
             name:'Revenue',
             val:'Revenue'

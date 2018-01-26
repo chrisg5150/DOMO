@@ -18,7 +18,7 @@ angular
         vm.getSum = function(items, metric) {
           if(items && items.length > 0){
             return +((items
-                .map(function(x) { return x[metric]; })
+                .map(function(x) { return x[metric]||0; })
                 .reduce(function(a, b) { return a + b; })).toFixed(2));
           } else {
             return 0;
@@ -29,7 +29,7 @@ angular
           if(items && items.length > 0){
             var len = items.length;
             var reduced = (items
-                .map(function(x) { return x[metric]; })
+                .map(function(x) { return x[metric]||0; })
                 .reduce(function(a, b) { return a + b; }));
             return +((reduced/len).toFixed(2));
           } else {
@@ -45,15 +45,16 @@ angular
           updateAll();
         });
 
-        $scope.$on('metric-change', function(event, val) {
+        $scope.$on('account-metric-change', function(event, val) {
           updateAll();
+
         });
 
         $scope.$on('agg-change', function(event, val) {
           updateAll();
         });
 
-        $scope.$on('view-change', function(event, val) {
+        $scope.$on('account-view-change', function(event, val) {
           updateAll();
       });
 
@@ -81,7 +82,6 @@ angular
 
         function updateData() {
           vm.data = orderData(PageData.domoData.accounts);
-          console.log('vm.data',vm.data);
           vm.compStr = compMapping[PageData.optionBar.timeCurrent.val];
         }
 
@@ -89,16 +89,23 @@ angular
           var data = [];
           if(arr) {
             var currTime = PageData.optionBar.timeCurrent.val;
-            var currMetric = PageData.optionBar.metricCurrent.val;
-            var currView = PageData.optionBar.viewCurrent.val;
+            var currMetric = PageData.optionBar.metricAccountCurrent.val;
+            var currView = PageData.optionBar.viewAccountCurrent.val;
+            var currName = PageData.optionBar.viewAccountCurrent.name;
             var currAgg = PageData.optionBar.aggCurrent.val;
             data = arr.map(function(item) {
               var newItem = {};
-              newItem.value = item[currTime+'_'+'CommAmt'];
-              newItem.prevValue = item.CompanyNumber; //do not have columns with previous year data - currently just using a placeholder
-              newItem.name = item.AccountTypes;
+              var val = item[currTime+'_'+currMetric];
+              var prevVal = item['prevYear_'+currTime+'_'+currMetric];
+              if(angular.isString(val)) {
+                val = (val === 'Y')?1:0;
+                prevVal = (prevVal === 'Y')?1:0;
+              }
+              
+              newItem.value = val;
+              newItem.prevValue = prevVal; 
+              newItem.name = item[currView]||'Unknown';
               newItem.create_date = item.CreateDate;
-              newItem.company_id = item.CompanyID;
               return newItem;
             })
             console.log('data',data);
@@ -135,10 +142,14 @@ angular
           vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;
           vm.pageData.optionBar.metricShow = false;
+          vm.pageData.optionBar.viewShow = false;
+          vm.pageData.optionBar.viewAccountShow = true;
+          vm.pageData.optionBar.metricAccountShow = true;          
+          vm.pageData.optionBar.backShow = false;
           vm.pageData.metricType = 'number';
-          vm.pageData.optionBar.metricCurrent = {
-            name:'Accounts',
-            val:'Accounts'
+          vm.pageData.optionBar.metricAccountCurrent = {
+            name:'Opened',
+            val:'Opened'
           }; 
           vm.changeClass = '';
           vm.chart = {};

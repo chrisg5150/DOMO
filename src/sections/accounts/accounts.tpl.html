@@ -1,7 +1,7 @@
 <div class="container">
     <div class="page-view accounts">
       <div class="summary-header bg" ng-class="accounts.changeClass">
-        <div><h2>{{accounts.total | useSummaryFilter:accounts.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{accounts.currentMetricPop}}" popover-trigger="'mouseenter'" class="pop" >{{accounts.pageData.optionBar.metricCurrent.name}}</span></h2></div>
+        <div><h2>{{accounts.total | useSummaryFilter:accounts.pageData.metricType}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{accounts.currentMetricPop}}" popover-trigger="'mouseenter'" class="pop" >{{accounts.pageData.optionBar.metricAccountCurrent.name}}</span></h2></div>
         <div><h4>{{accounts.totalChange | useSummaryFilter:accounts.pageData.metricType}} {{accounts.compStr}} {{accounts.pageData.lang.changeas}} <span popover-class="popover" popover-popup-delay="500" popover-placement="bottom" uib-popover="{{accounts.pageData.lang.datepop}}" popover-trigger="'mouseenter'" class="pop" >{{accounts.totalDate}}</span></h4></div>
       </div>
       <div class="graph-container accounts" >

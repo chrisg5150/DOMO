@@ -75,7 +75,40 @@ angular
               name:'By Account',
               val:'accountType'
             }
-          ],          
+          ],   
+          'viewAccountShow':false,
+          'viewAccountCurrent':{},
+          'viewAccountChoices':[
+            {
+              name:'By Group',
+              val:'repGroupDesc'
+            },
+            {
+              name:'By Rep',
+              val:'RepName'
+            },
+            {
+              name:'By Trade Status',
+              val:'TradeStatus'
+            }
+          ],   
+          'metricAccountShow':false,
+          'metricAccountCurrent':{},
+          'metricAccountChoices':[
+            {
+              name:'Opened',
+              val:'Opened'
+            },
+            {
+              name:'Active',
+              val:'Active'
+            },
+            {
+              name:'Commission',
+              val:'CommAmt'
+            }
+          ],
+          'backShow': false      
         },
         'domoData':{},
         'userData':{

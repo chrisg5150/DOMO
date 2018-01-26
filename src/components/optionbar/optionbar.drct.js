@@ -19,10 +19,14 @@ function optionbar() {
       vm.pageData.optionBar.metricCurrent = vm.pageData.optionBar.metricChoices[0];
       vm.pageData.optionBar.timeCurrent = vm.pageData.optionBar.timeChoices[0];
       vm.pageData.optionBar.viewCurrent = vm.pageData.optionBar.viewChoices[0];
+      vm.pageData.optionBar.viewAccountCurrent = vm.pageData.optionBar.viewAccountChoices[0];
+      vm.pageData.optionBar.metricAccountCurrent = vm.pageData.optionBar.metricAccountChoices[0];
       vm.pageData.optionBar.aggCurrent = vm.pageData.optionBar.aggChoices[0];
       vm.changeTime = changeTime;
       vm.changeMetric = changeMetric;
       vm.changeView = changeView;
+      vm.changeAccountView = changeAccountView;
+      vm.changeAccountMetric = changeAccountMetric;
       vm.changeAgg = changeAgg;
 
       function changeTime(val){
@@ -43,6 +47,21 @@ function optionbar() {
       function changeView(val){
         vm.pageData.optionBar.viewCurrent = val;
         $rootScope.$broadcast('view-change', val.val);
+      }
+
+      function changeAccountView(val){
+        vm.pageData.optionBar.viewAccountCurrent = val;
+        $rootScope.$broadcast('account-view-change', val.val);
+      }
+
+      function changeAccountMetric(val){
+        vm.pageData.optionBar.metricAccountCurrent = val;
+        if(val.val === 'CommAmt'){
+          vm.pageData.metricType = 'currency';
+        } else {
+          vm.pageData.metricType = 'number';
+        }
+        $rootScope.$broadcast('account-metric-change', val.val);
       }
 
       function changeAgg(val){
