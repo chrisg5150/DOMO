@@ -3,8 +3,6 @@ angular
     .module('app.core')
     .controller('AccountsController', function($scope, $rootScope, PageData, $log, accountsData, $filter) {
 
-        $log.log('accounts');
-
         var compMapping = {
           MTD:PageData.lang.mom,
           YTD:PageData.lang.yoy,
@@ -108,14 +106,12 @@ angular
               newItem.create_date = item.CreateDate;
               return newItem;
             })
-            console.log('data',data);
           }
           return data;
         }
 
         function updateChartData(){
           var filteredData = $filter('groupBy')(vm.data, 'name');
-          console.log('filteredData',filteredData);
           vm.chart.data = [];
           if(filteredData){
             angular.forEach(filteredData, function(value, key) {
@@ -127,8 +123,7 @@ angular
                 prevValue: vm['get'+agg](value, 'prevValue'),
               };
               
-              vm.chart.data.push(dataObj);
-              console.log('dataObj',dataObj);              
+              vm.chart.data.push(dataObj);             
             });
             vm.chart.data = $filter('orderBy')(vm.chart.data, 'value', true);
           }

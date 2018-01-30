@@ -20,7 +20,7 @@ gulp.task('clean-old', function() {
 });
 
 //Convert all HTML tpl files to Angular template module
-gulp.task('create-templates', function() {
+gulp.task('create-templates', ['clean-old'], function() {
     return gulp.src('./**/*.tpl.html')
         .pipe(ngHtml2Js({
             moduleName: "app.templates",

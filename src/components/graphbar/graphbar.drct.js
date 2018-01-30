@@ -27,9 +27,6 @@ function graphbar() {
         angular.forEach($scope.graphdata, function(value, key) {
           value.width = Math.round((value.value/maxVal.value)*100);
           value.change = (value.value - value.prevValue);
-          $log.log('$scope.reverse', $scope.reverse);
-          $log.log('value.value', value.value);
-          $log.log('value.prevValue', value.prevValue);
           value.color = (value.change >=0)?'green':'red';
           if($scope.reverse){
             value.color = (value.change <=0)?'green':'red';

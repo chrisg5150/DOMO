@@ -3,8 +3,6 @@ angular
     .module('app.core')
     .controller('VolumeController', function($scope, $rootScope, PageData, $log, volumeData, $filter) {
 
-        $log.log('Volume');
-
         var compMapping = {
           MTD:PageData.lang.mom,
           YTD:PageData.lang.yoy,
@@ -81,7 +79,6 @@ angular
 
         function updateData() {
           vm.data = orderData(PageData.domoData.revenue_volume);
-          console.log('vm.data',vm.data);
           vm.compStr = compMapping[PageData.optionBar.timeCurrent.val];
         }
 
@@ -106,7 +103,6 @@ angular
 
         function updateChartData(){
           var filteredData = $filter('groupBy')(vm.data, 'name');
-          console.log('filteredData',filteredData);
           vm.chart.data = [];
           if(filteredData){
             angular.forEach(filteredData, function(value, key) {

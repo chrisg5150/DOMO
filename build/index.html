@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crews Sales Insights</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
+    <script src="env.js"></script>
+    <link rel="stylesheet" href="assets/css/styles-b663132b.css"/>
+</head>
+<body data-ng-app="app" >
+
+    <header id="site-header">
+        <div data-ng-controller="NavbarController as navbar">
+          <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-ng-click="navbar.isNavCollapsed = !navbar.isNavCollapsed">
+        				<span class="sr-only">Toggle navigation</span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        			</button>
+              <div class="logo-container">
+                <div class="pull-left sprite img-logo"></div>
+                <div class="pull-left sprite img-logo-sm"></div>
+              </div>
+            </div>
+            <div class="collapse navbar-collapse" data-uib-collapse="navbar.isNavCollapsed">
+              <ul class="pull-right nav navbar-nav">
+                  <li><a href="#!/revenue">Revenue</a></li>
+                  <li><a href="#!/volume">Volume</a></li>
+                  <li><a href="#!/accounts">Accounts</a></li>
+              </ul>
+            </div>
+          </nav>
+          <optionbar></optionbar>
+        </div>
+        <div class="page-loader" data-ng-show="navbar.pageData.loading"><div class="throbber"></div></div>
+    </header>
+
+    <section id="main">
+        <div>
+            <ng-view class="page"></ng-view>
+        </div>
+    </section>
+
+    <script src="assets.min-38e5d190.js"></script>
+    <script src="app.min-96acbad0.js"></script>
+</body>
+</html>

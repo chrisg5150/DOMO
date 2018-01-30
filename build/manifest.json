@@ -6,7 +6,18 @@
     "height": 2
   },
   "mapping": [
-    
+    {
+      "alias": "revenue_volume",
+      "dataSetId": "f0362a43-ebee-487e-87d6-3e7250069eea",
+      "fields": [],
+      "id": ""
+    },
+    {
+      "alias": "accounts",
+      "dataSetId": "63b26cb7-1320-402d-b9d6-67340e9f157d",
+      "fields": [],
+      "id": ""
+    }
   ],
-  "id": ""
+  "id": "8c964d31-3b55-4781-9a48-32e3658779f2"
 }

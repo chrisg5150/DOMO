@@ -3,8 +3,6 @@ angular
     .module('app.core')
     .controller('RevenueController', function($scope, $rootScope, PageData, $log, revenueData, $filter, $location) {
 
-        $log.log('revenue');
-
         var compMapping = {
           MTD:PageData.lang.mom,
           YTD:PageData.lang.yoy,
@@ -84,7 +82,6 @@ angular
 
         function updateData() {
           vm.data = orderData(PageData.domoData.revenue_volume);
-          console.log('PageData.domoData.revenue_volume',PageData.domoData.revenue_volume);
           vm.compStr = compMapping[PageData.optionBar.timeCurrent.val];
         }
 
@@ -105,7 +102,6 @@ angular
               newItem.repId = item.repID;
               return newItem;
             })
-            // console.log('data',data);;
           }
           return data;
           
@@ -113,12 +109,10 @@ angular
 
         function updateChartData(){
           var filteredData = $filter('groupBy')(vm.data, 'name');
-          console.log('filteredData',filteredData);
           vm.chart.data = [];
           if(filteredData){
             angular.forEach(filteredData, function(value, key) {
               var agg = PageData.optionBar.aggCurrent.val;
-              console.log('value',value);
               var dataObj = {
                 subcategory:key||'Unknown',
                 id:value[0].id,
@@ -128,18 +122,13 @@ angular
               };
               
               vm.chart.data.push(dataObj);
-              // console.log('dataObj',dataObj);
             });
             vm.chart.data = $filter('orderBy')(vm.chart.data, 'value', true);
-            // console.log('vm.chart.data',vm.chart.data);
           }
         }
 
         function openDrill(val) {
-          console.log('val',val);
-          console.log('vm.data',vm.data);
           var filteredData = $filter('where')(vm.data, {name:val.subcategory});
-          console.log('filteredData',filteredData);
           $rootScope.$broadcast('open-drill', filteredData); 
           $location.path('groups/'+val.id);
         }

@@ -3,8 +3,6 @@ angular
     .module('app.core')
     .controller('GroupsController', function($scope, $rootScope, PageData, $log, groupsData, $filter, $routeParams) {
 
-        $log.log('groups');
-
         var compMapping = {
           MTD:PageData.lang.mom,
           YTD:PageData.lang.yoy,
@@ -80,12 +78,10 @@ angular
 
         function updateData() {
           vm.data = orderData(PageData.domoData.revenue_volume);
-          console.log('vm.data',vm.data);
           vm.compStr = compMapping[PageData.optionBar.timeCurrent.val];
         }
 
         function orderData(arr){
-          console.log('arr',arr);
           var data = [];
           if(arr) {
             var currTime = PageData.optionBar.timeCurrent.val;
@@ -109,7 +105,6 @@ angular
         function updateChartData(){
           //var filteredDataView = $filter('where')(vm.data, 'name' = 'None')
           var filteredData = $filter('groupBy')(vm.data, 'name');
-          console.log('filteredData',filteredData);
           vm.chart.data = [];
           if(filteredData){
             angular.forEach(filteredData, function(value, key) {
