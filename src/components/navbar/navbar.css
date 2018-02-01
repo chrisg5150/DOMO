@@ -65,6 +65,7 @@
 
 ul.navbar-nav {
   padding-top: 10px;
+  padding-right:30px;
 }
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus {

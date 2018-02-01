@@ -137,6 +137,7 @@ angular
           vm.pageData.optionBar.backShow = true;
           vm.pageData.optionBar.viewAccountShow = false;
           vm.pageData.optionBar.metricAccountShow = false;
+          vm.pageData.metricType = 'currency';
           vm.pageData.optionBar.metricCurrent = {
             name:'Revenue',
             val:'Revenue'

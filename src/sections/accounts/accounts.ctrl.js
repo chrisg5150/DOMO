@@ -25,9 +25,21 @@ angular
 
         vm.getAvg = function(items, metric) {
           if(items && items.length > 0){
-            var len = items.length;
-            var reduced = (items
-                .map(function(x) { return x[metric]||0; })
+            
+            var premap = {};
+            items.map(function(x) {  
+              var my = moment(x.create_date).format('MM-YY');
+              premap[my] = premap[my]||0;
+              var val = x[metric]||0;
+              premap[my] += val;
+            });
+            var premapArr = _.map(premap, function(x) {
+              return x;
+            });
+            
+            var len = premapArr.length;
+            var reduced = (premapArr
+                .map(function(x) { return x; })
                 .reduce(function(a, b) { return a + b; }));
             return +((reduced/len).toFixed(2));
           } else {
@@ -132,7 +144,7 @@ angular
         function init() {
           vm.pageData = PageData;
 
-          vm.pageData.title = 'Accounts';
+          vm.pageData.title = 'Companies';
           vm.pageData.optionBar.show = true;
           vm.pageData.optionBar.aggShow = true;
           vm.pageData.optionBar.timeShow = true;

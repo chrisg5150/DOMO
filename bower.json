@@ -29,13 +29,12 @@
     "angular-filter": "^0.5.15",
     "angular-messages": "1.6.1",
     "angular-bootstrap": "^2.5.0",
-    "alasql": "^0.3.7",
     "chart.js": "^2.5.0",
     "angular-chart.js": "^1.1.1",
-    "angular-smart-table": "^2.1.8"
+    "angular-smart-table": "^2.1.8",
+    "lodash": "^4.17.4"
   },
   "resolutions": {
-    "angular": "1.6.1",
-    "d3": "^4.7.1"
+    "angular": "1.6.1"
   }
 }

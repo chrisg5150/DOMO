@@ -133,6 +133,7 @@ angular
           vm.pageData.optionBar.backShow = false;
           vm.pageData.optionBar.viewAccountShow = false;
           vm.pageData.optionBar.metricAccountShow = false;
+          vm.pageData.metricType = 'number';
           vm.pageData.optionBar.metricCurrent = {
             name:'Volume',
             val:'Volume'

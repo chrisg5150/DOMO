@@ -6,7 +6,7 @@ angular
         'title': null,
         'icon':null,
         'description': null,
-        'loading': false,
+        'loading': true,
         'metricType':'currency',
         'dataGroup':'subcategory',
         'lang':{
