@@ -8,6 +8,7 @@ This app provides a way to view sales data by different metrics and dimensions.
 - Run `bower install` to load bower components
 
 ## Development
+- Run `domo login` from from any location and login to your Domo instance
 - Run `domo dev` from the src folder to test the dev version of the app using domo
 - Run `npm start` from the root folder to test the src without domo (testing style, layout, etc.)
 
